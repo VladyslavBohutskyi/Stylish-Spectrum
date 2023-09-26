@@ -1,0 +1,21 @@
+{
+  "sections": {
+    "main": {
+      "type": "empty-section",
+      "settings": {
+      }
+    },
+    "ad110c37-a65e-4244-8001-270a1ea0cc88": {
+      "type": "banner-section",
+      "settings": {
+        "title": "Vova",
+        "subtitle": "<p>Title vova<\/p>",
+        "image": "shopify:\/\/shop_images\/Soap-Image3.png"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "ad110c37-a65e-4244-8001-270a1ea0cc88"
+  ]
+}
