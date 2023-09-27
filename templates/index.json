@@ -2,10 +2,95 @@
   "sections": {
     "main": {
       "type": "empty-section",
-      "settings": {}
+      "settings": {
+      }
+    },
+    "78435f15-1447-4054-bc56-713bd41fe56e": {
+      "type": "image-banner",
+      "blocks": {
+        "6f6c3c52-bdc6-436e-acce-676fbddaa2ab": {
+          "type": "banner_item",
+          "settings": {
+            "desktop_image": "shopify:\/\/shop_images\/pexels-andrea-piacquadio-972884-min.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/pexels-myicahel-tamburini-1152994.jpg",
+            "banner_link": "",
+            "img_brightness": 1,
+            "title": "Quality Craftsmanship and Lasting Style",
+            "title_color": "#ffffff",
+            "subtitle": "\"Our clothing brand stands out for its commitment to quality craftsmanship and attention to detail. We take pride in offering our customers not only stylish and fashionable clothing but also garments that are designed to last, ensuring our clients always look their best.\"",
+            "subtitle_color": "#ffffff",
+            "btn_link": "",
+            "btn_name": "",
+            "btn_style": "underline",
+            "btn_color": "#000000"
+          }
+        },
+        "e91806ed-5ec9-436e-8246-b7367e9ec30c": {
+          "type": "banner_item",
+          "settings": {
+            "desktop_image": "shopify:\/\/shop_images\/pexels-godisable-jacob-718973-min.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/pexels-godisable-jacob-965324.jpg",
+            "banner_link": "",
+            "img_brightness": 0,
+            "title": "Affordable Fashion Excellence",
+            "title_color": "#ffffff",
+            "subtitle": "\"Our clothing brand is synonymous with exceptional value and affordability. We believe that high-quality fashion should be accessible to everyone, and we consistently offer competitive prices without compromising on style or quality.\"",
+            "subtitle_color": "#ffffff",
+            "btn_link": "",
+            "btn_name": "",
+            "btn_style": "underline",
+            "btn_color": "#000000"
+          }
+        },
+        "96d655eb-e6d3-4e02-80bd-f2d097c583f9": {
+          "type": "banner_item",
+          "settings": {
+            "desktop_image": "shopify:\/\/shop_images\/pexels-godisable-jacob-923210-min.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/pexels-godisable-jacob-794062.jpg",
+            "banner_link": "shopify:\/\/products\/classic-comfort-tee",
+            "img_brightness": 1,
+            "title": "Sustainability Meets Style",
+            "title_color": "#ffffff",
+            "subtitle": "\"When you choose our clothing brand, you're not just buying garments; you're investing in a brand that prioritizes sustainability. We are dedicated to eco-friendly practices, using sustainable materials and ethical production methods to minimize our environmental impact and promote a better future for fashion.\"",
+            "subtitle_color": "#ffffff",
+            "btn_link": "shopify:\/\/products\/classic-comfort-tee",
+            "btn_name": "Learn More",
+            "btn_style": "underline",
+            "btn_color": "#ffffff"
+          }
+        }
+      },
+      "block_order": [
+        "6f6c3c52-bdc6-436e-acce-676fbddaa2ab",
+        "e91806ed-5ec9-436e-8246-b7367e9ec30c",
+        "96d655eb-e6d3-4e02-80bd-f2d097c583f9"
+      ],
+      "settings": {
+        "container_width": 1300,
+        "margin_top_desktop": 0,
+        "margin_top_mobile": 0,
+        "margin_bottom_desktop": 50,
+        "margin_bottom_mobile": 50,
+        "padding_top_desktop": 50,
+        "padding_top_mobile": 50,
+        "padding_bottom_desktop": 50,
+        "padding_bottom_mobile": 50,
+        "auto_play": true,
+        "auto_play_speed": 4000,
+        "desktop_height": 800,
+        "mobile_height": 380,
+        "content_width": 440,
+        "vertical_alignment": "center",
+        "vertical_alignment_mobile": "end",
+        "horizontal_alignment": "start",
+        "horizontal_alignment_mobile": "center",
+        "text_align": "left",
+        "text_align_mobile": "center"
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "78435f15-1447-4054-bc56-713bd41fe56e"
   ]
 }
