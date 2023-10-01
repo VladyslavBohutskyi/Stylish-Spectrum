@@ -87,73 +87,10 @@
         "text_align": "left",
         "text_align_mobile": "center"
       }
-    },
-    "aa030c17-e9c6-4559-9ef0-800d8f9705ee": {
-      "type": "featured-products",
-      "blocks": {
-        "b312d4b3-c140-482b-8826-c56e5671ba4c": {
-          "type": "product_item",
-          "settings": {
-            "product_image": "shopify:\/\/shop_images\/O1CN01VTalIi1tcmdYEkbPB__3699745923_jpg_Q75_jpg.webp",
-            "product_image_hover": "shopify:\/\/shop_images\/O1CN01uhV8ae1tcmdTkjld6__3699745923_jpg_Q75_jpg.webp",
-            "product_link": ""
-          }
-        },
-        "d6595377-9170-4319-8933-f9d3cd5a2580": {
-          "type": "product_item",
-          "settings": {
-            "product_image": "shopify:\/\/shop_images\/O1CN01wNojn61tcmdG9tXaW__3699745923_jpg_Q75_jpg.webp",
-            "product_image_hover": "shopify:\/\/shop_images\/O1CN01pyKiqG1tcmdKzF6eS__3699745923_jpg_Q75_jpg.webp",
-            "product_link": ""
-          }
-        },
-        "1a5a9864-ec11-4e46-979b-cfa8215912cf": {
-          "type": "product_item",
-          "settings": {
-            "product_image": "shopify:\/\/shop_images\/O1CN013gaI4f1tcmi26W6gL__3699745923_jpg_Q75_jpg.webp",
-            "product_image_hover": "shopify:\/\/shop_images\/O1CN013fNZo71tcmYdDQAEp__3699745923_jpg_Q75_jpg.webp",
-            "product_link": ""
-          }
-        }
-      },
-      "block_order": [
-        "b312d4b3-c140-482b-8826-c56e5671ba4c",
-        "d6595377-9170-4319-8933-f9d3cd5a2580",
-        "1a5a9864-ec11-4e46-979b-cfa8215912cf"
-      ],
-      "settings": {
-        "bg_color": "#ffffff",
-        "margin_top_desktop": 0,
-        "margin_top_mobile": 0,
-        "margin_bottom_desktop": 0,
-        "margin_bottom_mobile": 0,
-        "padding_top_desktop": 35,
-        "padding_top_mobile": 0,
-        "padding_bottom_desktop": 35,
-        "padding_bottom_mobile": 35,
-        "container_width": 1300,
-        "content_width": 740,
-        "content_position": "left",
-        "content_position_mobile": "center",
-        "text_align": "left",
-        "text_align_mobile": "center",
-        "title": "FEATURED FASHION PICKS",
-        "title_font_size_desktop": 26,
-        "title_font_size_mobile": 22,
-        "title_color": "#000000",
-        "subtitle": "Explore our carefully curated selection of the latest and trendiest fashion pieces that keep you stylish and up-to-date.",
-        "subtitle_color": "#000000",
-        "btn_link": "shopify:\/\/products\/classic-comfort-tee",
-        "btn_name": "Buy Now",
-        "btn_style": "normal",
-        "btn_text_color": "#000000",
-        "btn_bg_color": "#ffffff"
-      }
     }
   },
   "order": [
     "main",
-    "78435f15-1447-4054-bc56-713bd41fe56e",
-    "aa030c17-e9c6-4559-9ef0-800d8f9705ee"
+    "78435f15-1447-4054-bc56-713bd41fe56e"
   ]
 }
