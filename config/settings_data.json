@@ -5,7 +5,17 @@
       "header": {
         "type": "header",
         "settings": {
-          
+          "sticky_header": true,
+          "menu_position": "center",
+          "max_width": 1300,
+          "height": 80,
+          "bg_color": "#FFFFFF",
+          "logo": "shopify:\/\/shop_images\/logo.png",
+          "menu": "main-menu",
+          "menu_font_size": 16,
+          "mob_menu_font_size": 16,
+          "menu_color": "#000",
+          "active_menu_color": "#676767"
         }
       },
       "footer": {
