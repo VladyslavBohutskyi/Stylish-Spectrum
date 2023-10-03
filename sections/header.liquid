@@ -1,6 +1,70 @@
 {{ 'header.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'header.js' | asset_url }}" defer></script>
 
+<style>
+  #shopify-section-{{ section.id }} .s-header {
+      background-color: {{ section.settings.bg_color }};
+  }
+
+  #shopify-section-{{ section.id }} header {
+      max-width: {{ section.settings.max_width }}px;
+      min-height: {{ section.settings.height }}px;
+      padding: {{ section.settings.header_padding }}px 15px;
+  }
+
+  #shopify-section-{{ section.id }} .s-header__logo {
+      width: {{ section.settings.logo_width }}px;
+  }
+
+  #shopify-section-{{ section.id }} .s-header__menu {
+      justify-content: {{ section.settings.menu_position }};
+  }
+
+  #shopify-section-{{ section.id }} .s-header__menu_item a {
+      color: {{ section.settings.menu_color }};
+      font-family: {{ settings.font_body.family }};
+      font-size: {{ section.settings.menu_font_size }}px;
+  }
+
+  #shopify-section-{{ section.id }} .s-header__menu_item a:before {
+      background-color: {{ section.settings.menu_color }};
+  }
+
+  #shopify-section-{{ section.id }} .s-header__menu_item--active > a {
+      color: {{ section.settings.active_menu_color }};
+  }
+
+  #shopify-section-{{ section.id }} .s-header__menu_item--parent > svg {
+      fill: {{ section.settings.menu_color }};
+  }
+
+  #shopify-section-{{ section.id }} .s-header__menu_item--parent.s-header__menu_item--active > svg {
+      fill: {{ section.settings.active_menu_color }};
+  }
+
+  #shopify-section-{{ section.id }} .s-header__menu_item--active > a:before {
+      background-color: {{ section.settings.active_menu_color }};
+  }
+
+  #shopify-section-{{ section.id }} .s-header__account svg path {
+      fill: {{ section.settings.menu_color }};
+  }
+
+  #shopify-section-{{ section.id }} .s-header__account a:hover svg path {
+      fill: {{ section.settings.active_menu_color }};
+  }
+
+  #shopify-section-{{ section.id }} .s-header__menu-btn svg path {
+      fill: {{ section.settings.menu_color }};
+  }
+
+  @media screen and (max-width: 990px) {
+      #shopify-section-{{ section.id }} .s-header__menu a {
+          font-size: {{ section.settings.mob_menu_font_size }}px;
+      }
+  }
+</style>
+
 <s-header class="s-header">
   <header>
     <span class="s-header__menu_btn">
@@ -21,12 +85,13 @@
     <nav class="s-header__nav">
       <ul class="s-header__menu">
         {% for link in section.settings.menu.links %}
-          <li class="s-header__menu_item {% if link.active %}s-header__menu_item--active{% endif %} {% if link.links.size > 0 -%} s-header__menu_item--parent {% endif %}">
+          <li class="s-header__menu_item {% if link.active %} s-header__menu_item--active {% endif %} {% if link.links.size > 0 -%} s-header__menu_item--parent {% endif %}">
             {{ link.title | link_to: link.url }}
             {% if link.links.size > 0 -%}
+              {% render 'icon-angle' %}
               <ul>
                 {% for link_child in link.links %}
-                  <li class="{% if link_child.active %} active {% endif %}">
+                  <li class="{% if link_child.active %}active{% endif %}">
                     {{ link_child.title | link_to: link_child.url }}
                   </li>
                 {% endfor %}
@@ -38,7 +103,7 @@
     </nav>
     <div class="s-header__account">
       <a href="{{ routes.search_url }}">
-        {%  render 'icon-search' %}
+        {% render 'icon-search' %}
       </a>
       <a href="{{ routes.account_url }}">
         {% render 'icon-account' %}
@@ -54,12 +119,6 @@
 {
   "name": "Header",
   "settings": [
-    {
-      "type": "checkbox",
-      "id": "sticky_header",
-      "label": "Sticky header",
-      "default": true
-    },
     {
       "type": "select",
       "id": "menu_position",
@@ -86,6 +145,7 @@
       "min": 1200,
       "max": 1600,
       "step": 5,
+      "unit": "px",
       "label": "Container width",
       "default": 1300
     },
@@ -95,8 +155,19 @@
       "min": 60,
       "max": 160,
       "step": 1,
+      "unit": "px",
       "label": "Header height",
       "default": 80
+    },
+    {
+      "type": "range",
+      "id": "header_padding",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Header padding",
+      "default": 20
     },
     {
       "type": "color",
@@ -108,6 +179,16 @@
       "type": "image_picker",
       "id": "logo",
       "label": "Logo"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "min": 80,
+      "max": 280,
+      "step": 2,
+      "unit": "px",
+      "label": "Logo wirth",
+      "default": 140
     },
     {
       "type": "link_list",

@@ -8,6 +8,7 @@
     justify-content: space-between;
     margin: auto;
     align-items: center;
+    padding: 20px 15px;
   }
 
   &__menu_btn {
@@ -42,9 +43,7 @@
   &__logo {
     img {
       display: block;
-      height: 50px;
-      width: 200px;
-      object-fit: contain;
+      height: auto;
     }
 
     @media screen and (max-width: 990px) {
@@ -56,17 +55,7 @@
 
   &__nav {
     flex: 1;
-  }
-
-  &__menu {
-
-    a {
-      font-size: 20px;
-      text-decoration: none;
-      text-transform: uppercase;
-      margin: 10px;
-    }
-
+    align-self: stretch;
     @media screen and (max-width: 990px) {
       left: -100vw;
       position: fixed;
@@ -80,10 +69,117 @@
         display: block;
         margin: 0;
         padding: 16px;
-        padding-left: 21px;
         text-transform: capitalize;
       }
     }
+  }
+
+  &__menu {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    margin: 0;
+    padding: 0 20px;
+
+    &_item {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      margin: 0 10px;
+
+      & a{
+        text-decoration: none;
+        position: relative;
+        padding: 15px 0;
+        cursor: pointer;
+        transition: color 0.2s ease-in-out;
+      }
+      & a {
+        &:before {
+          content: "";
+          position: absolute;
+          left: 0;
+          height: 1px;
+          width: 0;
+          bottom: 13px;
+          transition: width 0.2s ease;
+        }
+
+        &:hover {
+          &:before {
+            width: 100%;
+            transition: width 0.2s ease;
+          }
+        }
+      }
+
+      &--active {
+       & > a {
+          &:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            height: 1px;
+            width: 100%;
+            bottom: 13px;
+          }
+        }
+      }
+
+      &--parent {
+        position: relative;
+        cursor: pointer;
+
+        svg {
+          position: absolute;
+          right: -14px;
+          font-size: 12px;
+          transform: rotate(0deg);
+          transition: all 0.3s ease-in-out;
+        }
+
+        ul {
+          transition-delay: .3s;
+          opacity: 0;
+          z-index: -1;
+          position: absolute;
+          top: 40px;
+          width: max-content;
+          min-width: 220px;
+          background-color: white;
+          padding: 24px 20px;
+          text-align: left;
+
+          li {
+            margin-top: 18px;
+            list-style: none;
+            &:first-child {
+              margin-top: 0;
+            }
+            a{
+              padding: 0;
+              &:before{
+                bottom: 0;
+              }
+            }
+          }
+        }
+
+        &:hover {
+          svg {
+            transform: rotate(-90deg);
+          }
+
+          ul {
+            opacity: 1;
+            z-index: 1;
+            top: 60px;
+            transition: opacity .25s ease, top .2s ease;
+          }
+        }
+      }
+    }
+
   }
 
   &__account {
@@ -93,6 +189,9 @@
       width: 20px;
       height: 20px;
       margin: 10px;
+      path{
+        transition: all 0.2s ease-in-out;
+      }
     }
   }
 
