@@ -9,12 +9,12 @@
           "menu_position": "center",
           "max_width": 1300,
           "height": 80,
-          "bg_color": "#FFFFFF",
+          "bg_color": "#ffffff",
           "logo": "shopify:\/\/shop_images\/logo.png",
-          "menu": "main-menu",
+          "menu": "header",
           "menu_font_size": 16,
           "mob_menu_font_size": 16,
-          "menu_color": "#000",
+          "menu_color": "#000000",
           "active_menu_color": "#676767"
         }
       },

@@ -27,7 +27,7 @@
               <ul>
                 {% for link_child in link.links %}
                   <li class="{% if link_child.active %} active {% endif %}">
-                    {{ link.title | link_to: link.url }}
+                    {{ link_child.title | link_to: link_child.url }}
                   </li>
                 {% endfor %}
               </ul>
