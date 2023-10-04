@@ -1,6 +1,8 @@
 {
   "current": {
     "font_body": "sans-serif",
+    "header_logo": "shopify:\/\/shop_images\/stylish_spectrum_logo.png",
+    "header_menu": "header",
     "sections": {
       "header": {
         "type": "header",

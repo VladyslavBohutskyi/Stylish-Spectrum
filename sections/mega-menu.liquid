@@ -1,6 +1,47 @@
 {{ 'section-mega-menu.css' | asset_url | stylesheet_tag }}
 
-<siction class="s-mega-menu" id="parent-{{ section.settings.parent_menu }}"> </siction>
+<section class="s-mega-menu" id="parent-{{ section.settings.parent_menu }}">
+  <div class="s-mega-menu__container">
+    <div class="s-mega-menu__row">
+      {% for block in section.blocks %}
+        {%- assign column = block.settings -%}
+        <div class="s-mega-menu__col">
+          {% if column.menu.links.size > 0 %}
+            {% if column.title %}
+              <h3>{{ column.title }}</h3>
+            {% endif %}
+            <nav class="s-mega-menu__nav">
+              <ul class="s-mega-menu__menu">
+                {% for link in column.menu.links %}
+                  <li class="s-mega-menu__menu_item {% if link.active %} s-mega-menu__menu_item--active {% endif %}">
+                    {{ link.title | link_to: link.url }}
+                  </li>
+                {% endfor %}
+              </ul>
+            </nav>
+          {% else %}
+            <div class="s-mega-menu__product">
+              {% if column.product_link %}
+                <a href="{{ column.product_link }}">
+              {% endif %}
+              <img src="{{ column.product_image | img_url: 'master' }}" class="s-mega-menu__product_img">
+              <img
+                src="{{ column.product_image_hover | img_url: 'master' }}"
+                class="s-featured-products__row_product_img s-mega-menu__product_img--hover"
+              >
+              {% if column.title %}
+                <h3>{{ column.title }}</h3>
+              {% endif %}
+              {% if column.product_link %}
+                </a>
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
 
 {% schema %}
 {
@@ -27,26 +68,6 @@
     },
     {
       "type": "range",
-      "id": "padding_top",
-      "min": 0,
-      "max": 150,
-      "step": 5,
-      "unit": "px",
-      "label": "Padding top",
-      "default": 50
-    },
-    {
-      "type": "range",
-      "id": "padding_bottom",
-      "min": 0,
-      "max": 150,
-      "step": 5,
-      "unit": "px",
-      "label": "Padding bottom",
-      "default": 50
-    },
-    {
-      "type": "range",
       "id": "container_width",
       "min": 800,
       "max": 1800,
@@ -54,6 +75,53 @@
       "unit": "px",
       "label": "Container width",
       "default": 1300
+    }
+  ],
+  "max_blocks": 4,
+  "blocks": [
+    {
+      "type": "mega-menu_column",
+      "name": "Mega menu column",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Name"
+        },
+        {
+          "type": "range",
+          "id": "max_width",
+          "min": 20,
+          "max": 100,
+          "step": 1,
+          "unit": "%",
+          "label": "Max width column",
+          "default": 100
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu",
+          "info": "Select a menu, or fill in the pictures"
+        },
+        {
+          "type": "image_picker",
+          "id": "product_image",
+          "label": "Product Image",
+          "info": "Size Recommended 250x300"
+        },
+        {
+          "type": "image_picker",
+          "id": "product_image_hover",
+          "label": "Product Image Hover",
+          "info": "Size Recommended 250x300"
+        },
+        {
+          "type": "url",
+          "id": "product_link",
+          "label": "Product Link"
+        }
+      ]
     }
   ],
   "presets": [

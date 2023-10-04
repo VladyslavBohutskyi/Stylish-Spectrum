@@ -2,6 +2,7 @@
   "sections": {
     "main": {
       "type": "empty-section",
+      "disabled": true,
       "settings": {
       }
     },
@@ -132,7 +133,10 @@
         "padding_bottom_desktop": 35,
         "padding_bottom_mobile": 35,
         "container_width": 1300,
+        "column_proportion": "25",
+        "images_height": 290,
         "content_width": 740,
+        "content_vertical_position": "center",
         "content_position": "left",
         "content_position_mobile": "center",
         "text_align": "left",
@@ -141,7 +145,7 @@
         "title_font_size_desktop": 26,
         "title_font_size_mobile": 22,
         "title_color": "#000000",
-        "subtitle": "<p>Explore our carefully curated selection of the latest and trendiest fashion pieces that keep you stylish and up-to-date.</p>",
+        "subtitle": "<p>Explore our carefully curated selection of the latest and trendiest fashion pieces that keep you stylish and up-to-date.<\/p>",
         "subtitle_color": "#000000",
         "btn_link": "shopify:\/\/products\/classic-comfort-tee",
         "btn_name": "Buy Now",
