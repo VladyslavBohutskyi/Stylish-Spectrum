@@ -316,8 +316,8 @@
       {
         "type": "range",
         "id": "header_height",
-        "min": 60,
-        "max": 160,
+        "min": 40,
+        "max": 140,
         "step": 1,
         "unit": "px",
         "label": "Header height",

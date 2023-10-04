@@ -5,22 +5,69 @@
     "header": {
       "type": "header",
       "settings": {
-        "menu_position": "center",
-        "max_width": 1300,
-        "height": 80,
-        "header_padding": 20,
-        "bg_color": "#FFFFFF",
-        "logo": "shopify:\/\/shop_images\/stylish_spectrum_logo.png",
-        "logo_width": 140,
-        "menu": "header",
-        "menu_font_size": 16,
-        "mob_menu_font_size": 16,
-        "menu_color": "#000",
-        "active_menu_color": "#676767"
+      }
+    },
+    "852cfd65-9508-4092-9937-78f5121e91c2": {
+      "type": "mega-menu",
+      "blocks": {
+        "ff2f89b1-cfd0-45d7-ac10-68cf469d9eea": {
+          "type": "mega-menu_column",
+          "settings": {
+            "title": "Favorites products",
+            "max_width_column": 20,
+            "menu": "header",
+            "product_link": ""
+          }
+        },
+        "7cee7d6e-e5bd-47f1-b692-406a895ed864": {
+          "type": "mega-menu_column",
+          "settings": {
+            "title": "ChicCanvas",
+            "max_width_column": 20,
+            "menu": "",
+            "product_image": "shopify:\/\/shop_images\/pexels-the-lazy-artist-gallery-1223343-min.jpg",
+            "product_image_hover": "shopify:\/\/shop_images\/pexels-godisable-jacob-871495-min.jpg",
+            "product_link": "shopify:\/\/products\/classic-comfort-tee"
+          }
+        },
+        "19b543ea-6c89-4828-b835-19aeb16d8697": {
+          "type": "mega-menu_column",
+          "settings": {
+            "title": "UrbanFinesse",
+            "max_width_column": 100,
+            "menu": "",
+            "product_image": "shopify:\/\/shop_images\/pexels-godisable-jacob-908935-min.jpg",
+            "product_image_hover": "shopify:\/\/shop_images\/pexels-godisable-jacob-907673-min.jpg",
+            "product_link": ""
+          }
+        },
+        "32ef123c-db2b-4495-93e6-a7cb811d2c6c": {
+          "type": "mega-menu_column",
+          "settings": {
+            "title": "TailorTrends",
+            "max_width_column": 20,
+            "menu": "",
+            "product_image": "shopify:\/\/shop_images\/pexels-godisable-jacob-718977-min.jpg",
+            "product_image_hover": "shopify:\/\/shop_images\/pexels-godisable-jacob-833168-min.jpg",
+            "product_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "ff2f89b1-cfd0-45d7-ac10-68cf469d9eea",
+        "7cee7d6e-e5bd-47f1-b692-406a895ed864",
+        "19b543ea-6c89-4828-b835-19aeb16d8697",
+        "32ef123c-db2b-4495-93e6-a7cb811d2c6c"
+      ],
+      "settings": {
+        "parent_menu": "",
+        "container_width": 1300,
+        "images_height": 290
       }
     }
   },
   "order": [
-    "header"
+    "header",
+    "852cfd65-9508-4092-9937-78f5121e91c2"
   ]
 }

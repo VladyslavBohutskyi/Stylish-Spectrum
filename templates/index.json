@@ -1,11 +1,5 @@
 {
   "sections": {
-    "main": {
-      "type": "empty-section",
-      "disabled": true,
-      "settings": {
-      }
-    },
     "78435f15-1447-4054-bc56-713bd41fe56e": {
       "type": "image-banner",
       "blocks": {
@@ -156,7 +150,6 @@
     }
   },
   "order": [
-    "main",
     "78435f15-1447-4054-bc56-713bd41fe56e",
     "aa030c17-e9c6-4559-9ef0-800d8f9705ee"
   ]
