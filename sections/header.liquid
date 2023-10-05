@@ -1,5 +1,4 @@
 {{ 'header.css' | asset_url | stylesheet_tag }}
-<script src="{{ 'header.js' | asset_url }}" defer></script>
 
 <style>
   #shopify-section-{{ section.id }} .s-header {
@@ -65,7 +64,7 @@
   }
 </style>
 
-<s-header class="s-header">
+<section class="s-header">
   <header>
     <span class="s-header__menu_btn">
       {% render 'icon-hamburger' %}
@@ -113,7 +112,7 @@
       </a>
     </div>
   </header>
-</s-header>
+</section>
 
 {% schema %}
 {
