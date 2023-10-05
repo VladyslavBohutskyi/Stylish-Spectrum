@@ -64,10 +64,71 @@
         "container_width": 1300,
         "images_height": 290
       }
+    },
+    "e0074e05-0307-46cc-afdf-f51dee0b4a46": {
+      "type": "mega-menu",
+      "blocks": {
+        "b49745ad-4235-4c8c-9c9f-da67613a414c": {
+          "type": "mega-menu_column",
+          "settings": {
+            "title": "Name",
+            "max_width_column": 100,
+            "menu": "",
+            "product_image": "shopify:\/\/shop_images\/pexels-myicahel-tamburini-1152994.jpg",
+            "product_image_hover": "shopify:\/\/shop_images\/pexels-myicahel-tamburini-1152994.jpg",
+            "product_link": ""
+          }
+        },
+        "5aaeb7d9-d658-4538-806a-af5f3ac34757": {
+          "type": "mega-menu_column",
+          "settings": {
+            "title": "Name 2",
+            "max_width_column": 100,
+            "menu": "",
+            "product_image": "shopify:\/\/shop_images\/pexels-marlon-schmeiski-4124201.jpg",
+            "product_image_hover": "shopify:\/\/shop_images\/pexels-marlon-schmeiski-4124201.jpg",
+            "product_link": ""
+          }
+        },
+        "2f151c89-72c1-4211-84b9-df0f551ec485": {
+          "type": "mega-menu_column",
+          "settings": {
+            "title": "Name 3",
+            "max_width_column": 100,
+            "menu": "",
+            "product_image": "shopify:\/\/shop_images\/pexels-evg-kowalievska-1055691.jpg",
+            "product_image_hover": "shopify:\/\/shop_images\/pexels-evg-kowalievska-1055691.jpg",
+            "product_link": ""
+          }
+        },
+        "7f1f54d0-2de1-4e1c-a2e9-46c0f50d98a1": {
+          "type": "mega-menu_column",
+          "settings": {
+            "title": "Name 4",
+            "max_width_column": 100,
+            "menu": "",
+            "product_image": "shopify:\/\/shop_images\/pexels-godisable-jacob-794062.jpg",
+            "product_image_hover": "shopify:\/\/shop_images\/pexels-godisable-jacob-794062.jpg",
+            "product_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "b49745ad-4235-4c8c-9c9f-da67613a414c",
+        "5aaeb7d9-d658-4538-806a-af5f3ac34757",
+        "2f151c89-72c1-4211-84b9-df0f551ec485",
+        "7f1f54d0-2de1-4e1c-a2e9-46c0f50d98a1"
+      ],
+      "settings": {
+        "parent_menu": "Collections",
+        "container_width": 1300,
+        "images_height": 290
+      }
     }
   },
   "order": [
     "header",
-    "852cfd65-9508-4092-9937-78f5121e91c2"
+    "852cfd65-9508-4092-9937-78f5121e91c2",
+    "e0074e05-0307-46cc-afdf-f51dee0b4a46"
   ]
 }
