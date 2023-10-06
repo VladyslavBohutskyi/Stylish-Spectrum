@@ -1,0 +1,134 @@
+{
+  "name": "Header",
+  "type": "header",
+  "sections": {
+    "header": {
+      "type": "header",
+      "settings": {
+      }
+    },
+    "852cfd65-9508-4092-9937-78f5121e91c2": {
+      "type": "mega-menu",
+      "blocks": {
+        "ff2f89b1-cfd0-45d7-ac10-68cf469d9eea": {
+          "type": "mega-menu_column",
+          "settings": {
+            "title": "Favorites products",
+            "max_width_column": 20,
+            "menu": "header",
+            "product_link": ""
+          }
+        },
+        "7cee7d6e-e5bd-47f1-b692-406a895ed864": {
+          "type": "mega-menu_column",
+          "settings": {
+            "title": "ChicCanvas",
+            "max_width_column": 20,
+            "menu": "",
+            "product_image": "shopify:\/\/shop_images\/pexels-the-lazy-artist-gallery-1223343-min.jpg",
+            "product_image_hover": "shopify:\/\/shop_images\/pexels-godisable-jacob-871495-min.jpg",
+            "product_link": "shopify:\/\/products\/classic-comfort-tee"
+          }
+        },
+        "19b543ea-6c89-4828-b835-19aeb16d8697": {
+          "type": "mega-menu_column",
+          "settings": {
+            "title": "UrbanFinesse",
+            "max_width_column": 100,
+            "menu": "",
+            "product_image": "shopify:\/\/shop_images\/pexels-godisable-jacob-908935-min.jpg",
+            "product_image_hover": "shopify:\/\/shop_images\/pexels-godisable-jacob-907673-min.jpg",
+            "product_link": ""
+          }
+        },
+        "32ef123c-db2b-4495-93e6-a7cb811d2c6c": {
+          "type": "mega-menu_column",
+          "settings": {
+            "title": "TailorTrends",
+            "max_width_column": 20,
+            "menu": "",
+            "product_image": "shopify:\/\/shop_images\/pexels-godisable-jacob-718977-min.jpg",
+            "product_image_hover": "shopify:\/\/shop_images\/pexels-godisable-jacob-833168-min.jpg",
+            "product_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "ff2f89b1-cfd0-45d7-ac10-68cf469d9eea",
+        "7cee7d6e-e5bd-47f1-b692-406a895ed864",
+        "19b543ea-6c89-4828-b835-19aeb16d8697",
+        "32ef123c-db2b-4495-93e6-a7cb811d2c6c"
+      ],
+      "settings": {
+        "parent_menu": "Home page",
+        "container_width": 1300,
+        "images_height": 290
+      }
+    },
+    "e0074e05-0307-46cc-afdf-f51dee0b4a46": {
+      "type": "mega-menu",
+      "blocks": {
+        "b49745ad-4235-4c8c-9c9f-da67613a414c": {
+          "type": "mega-menu_column",
+          "settings": {
+            "title": "Name",
+            "max_width_column": 100,
+            "menu": "",
+            "product_image": "shopify:\/\/shop_images\/pexels-myicahel-tamburini-1152994.jpg",
+            "product_image_hover": "shopify:\/\/shop_images\/pexels-myicahel-tamburini-1152994.jpg",
+            "product_link": ""
+          }
+        },
+        "5aaeb7d9-d658-4538-806a-af5f3ac34757": {
+          "type": "mega-menu_column",
+          "settings": {
+            "title": "Name 2",
+            "max_width_column": 100,
+            "menu": "",
+            "product_image": "shopify:\/\/shop_images\/pexels-marlon-schmeiski-4124201.jpg",
+            "product_image_hover": "shopify:\/\/shop_images\/pexels-marlon-schmeiski-4124201.jpg",
+            "product_link": ""
+          }
+        },
+        "2f151c89-72c1-4211-84b9-df0f551ec485": {
+          "type": "mega-menu_column",
+          "settings": {
+            "title": "Name 3",
+            "max_width_column": 100,
+            "menu": "",
+            "product_image": "shopify:\/\/shop_images\/pexels-evg-kowalievska-1055691.jpg",
+            "product_image_hover": "shopify:\/\/shop_images\/pexels-evg-kowalievska-1055691.jpg",
+            "product_link": ""
+          }
+        },
+        "7f1f54d0-2de1-4e1c-a2e9-46c0f50d98a1": {
+          "type": "mega-menu_column",
+          "settings": {
+            "title": "Name 4",
+            "max_width_column": 100,
+            "menu": "",
+            "product_image": "shopify:\/\/shop_images\/pexels-godisable-jacob-794062.jpg",
+            "product_image_hover": "shopify:\/\/shop_images\/pexels-godisable-jacob-794062.jpg",
+            "product_link": ""
+          }
+        }
+      },
+      "block_order": [
+        "b49745ad-4235-4c8c-9c9f-da67613a414c",
+        "5aaeb7d9-d658-4538-806a-af5f3ac34757",
+        "2f151c89-72c1-4211-84b9-df0f551ec485",
+        "7f1f54d0-2de1-4e1c-a2e9-46c0f50d98a1"
+      ],
+      "settings": {
+        "parent_menu": "Collections",
+        "container_width": 1300,
+        "images_height": 290
+      }
+    }
+  },
+  "order": [
+    "header",
+    "852cfd65-9508-4092-9937-78f5121e91c2",
+    "e0074e05-0307-46cc-afdf-f51dee0b4a46"
+  ]
+}

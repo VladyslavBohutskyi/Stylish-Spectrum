@@ -305,7 +305,7 @@
         "type": "text",
         "id": "social_tiktok_link",
         "label": "TikTok",
-        "info": "https://tiktok.com/@shopify"
+        "info": "https:\/\/tiktok.com\/@shopify"
       },
       {
         "type": "text",
@@ -329,13 +329,13 @@
         "type": "text",
         "id": "social_tumblr_link",
         "label": "Tumblr",
-        "info": "https://shopify.tumblr.com"
+        "info": "https:\/\/shopify.tumblr.com"
       },
       {
         "type": "text",
         "id": "social_vimeo_link",
         "label": "Vimeo",
-        "info": "https://vimeo.com/shopify"
+        "info": "https:\/\/vimeo.com\/shopify"
       }
     ]
   }
