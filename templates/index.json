@@ -1,10 +1,5 @@
 {
   "sections": {
-    "main": {
-      "type": "empty-section",
-      "settings": {
-      }
-    },
     "78435f15-1447-4054-bc56-713bd41fe56e": {
       "type": "image-banner",
       "blocks": {
@@ -132,7 +127,10 @@
         "padding_bottom_desktop": 35,
         "padding_bottom_mobile": 35,
         "container_width": 1300,
+        "column_proportion": "25",
+        "images_height": 290,
         "content_width": 740,
+        "content_vertical_position": "center",
         "content_position": "left",
         "content_position_mobile": "center",
         "text_align": "left",
@@ -152,7 +150,6 @@
     }
   },
   "order": [
-    "main",
     "78435f15-1447-4054-bc56-713bd41fe56e",
     "aa030c17-e9c6-4559-9ef0-800d8f9705ee"
   ]

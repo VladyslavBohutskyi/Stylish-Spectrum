@@ -277,6 +277,140 @@
     ]
   },
   {
+    "name": "Header settings",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Header settings"
+      },
+      {
+        "type": "select",
+        "id": "header_menu_position",
+        "label": "Menu position",
+        "options": [
+          {
+            "value": "left",
+            "label": "Left"
+          },
+          {
+            "value": "center",
+            "label": "Center"
+          },
+          {
+            "value": "right",
+            "label": "Right"
+          }
+        ],
+        "default": "center"
+      },
+      {
+        "type": "range",
+        "id": "header_max_width",
+        "min": 1200,
+        "max": 1600,
+        "step": 5,
+        "unit": "px",
+        "label": "Container width",
+        "default": 1300
+      },
+      {
+        "type": "range",
+        "id": "header_height",
+        "min": 40,
+        "max": 140,
+        "step": 1,
+        "unit": "px",
+        "label": "Header height",
+        "default": 80
+      },
+      {
+        "type": "range",
+        "id": "header_padding",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Header padding",
+        "default": 20
+      },
+      {
+        "type": "range",
+        "id": "megamenu_padding",
+        "min": 0,
+        "max": 150,
+        "step": 5,
+        "unit": "px",
+        "label": "Mega menu padding",
+        "default": 50
+      },
+      {
+        "type": "color",
+        "id": "header_bg_color",
+        "label": "Background color",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "image_picker",
+        "id": "header_logo",
+        "label": "Logo"
+      },
+      {
+        "type": "range",
+        "id": "header_logo_width",
+        "min": 80,
+        "max": 280,
+        "step": 2,
+        "unit": "px",
+        "label": "Logo width",
+        "default": 140
+      },
+      {
+        "type": "link_list",
+        "id": "header_menu",
+        "label": "Menu"
+      },
+      {
+        "type": "range",
+        "id": "header_menu_font_size",
+        "min": 12,
+        "max": 34,
+        "step": 1,
+        "unit": "px",
+        "label": "Menu Font size",
+        "default": 16
+      },
+      {
+        "type": "range",
+        "id": "header_mob_menu_font_size",
+        "min": 12,
+        "max": 34,
+        "step": 1,
+        "unit": "px",
+        "label": "Mobile menu Font size",
+        "default": 16
+      },
+      {
+        "type": "color",
+        "id": "header_menu_color",
+        "label": "Menu color",
+        "default": "#000"
+      },
+      {
+        "type": "color",
+        "id": "header_active_menu_color",
+        "label": "Active menu color",
+        "default": "#676767"
+      },
+      {
+        "type": "font_picker",
+        "id": "menu_font_heading",
+        "default": "assistant_n4",
+        "label": "Menu font",
+        "info": "Selecting a different font can affect the speed of your store. [Learn more about system fonts.](https:\/\/help.shopify.com\/manual\/online-store\/os\/store-speed\/improving-speed#fonts)"
+      }
+    ]
+  },
+  {
     "name": "Social media",
     "settings": [
       {
