@@ -1,68 +1,77 @@
 {{ 'section-mega-menu.css' | asset_url | stylesheet_tag }}
 
 <style>
-  #shopify-section-{{ section.id }} .s-mega-menu {
-      background-color: {{ settings.header_bg_color }};
-      padding: {{ settings.megamenu_padding }}px 15px {{ settings.megamenu_padding | plus: settings.header_padding }}px;
-      top: {{ settings.header_padding | times: 2 | plus: settings.header_height }}px;
-  }
+    #shopify-section-{{ section.id }} .s-mega-menu {
+        background-color: {{ settings.header_bg_color }};
+        padding: {{ settings.megamenu_padding }}px 15px {{ settings.megamenu_padding | plus: settings.header_padding }}px;
+        top: {{ settings.header_padding | times: 2 | plus: settings.header_height }}px;
+    }
 
 
-  #shopify-section-{{ section.id }} .s-mega-menu__product-name {
-      background-color: {{ settings.header_menu_color }};
-      color: {{ settings.header_bg_color }};
-  }
+    #shopify-section-{{ section.id }} .s-mega-menu__product-name {
+        background-color: {{ settings.header_menu_color }};
+        color: {{ settings.header_bg_color }};
+    }
 
-  #shopify-section-{{ section.id }} .s-mega-menu__product-name a{
-      color: {{ settings.header_bg_color }};
-  }
+    #shopify-section-{{ section.id }} .s-mega-menu__product-name a{
+        color: {{ settings.header_bg_color }};
+    }
 
-  #shopify-section-{{ section.id }} .s-mega-menu__product {
-      height: {{ section.settings.images_height }}px;
-  }
+    #shopify-section-{{ section.id }} .s-mega-menu__product {
+        height: {{ section.settings.images_height }}px;
+    }
 
 
-  #shopify-section-{{ section.id }} .s-mega-menu__menu_item a {
-      color: {{ settings.header_menu_color }};
-      font-family: {{ settings.menu_font_heading.family }};
-      font-size: {{ settings.header_menu_font_size }}px;
-  }
+    #shopify-section-{{ section.id }} .s-mega-menu__menu_item a {
+        color: {{ settings.header_menu_color }};
+        font-family: {{ settings.menu_font_heading.family }};
+        font-size: {{ settings.header_menu_font_size }}px;
+    }
 
-  #shopify-section-{{ section.id }} .s-mega-menu__nav span {
-      color: {{ settings.header_menu_color }};
-      opacity: 0.8;
-      font-family: {{ settings.menu_font_heading.family }};
-      font-size: {{ settings.header_menu_font_size | plus: 4 }}px;
-  }
+    #shopify-section-{{ section.id }} .s-mega-menu__nav span {
+        color: {{ settings.header_menu_color }};
+        font-family: {{ settings.menu_font_heading.family }};
+        font-size: {{ settings.header_menu_font_size | plus: 4 }}px;
+    }
 
-  #shopify-section-{{ section.id }} .s-mega-menu__menu_item a:before {
-      background-color: {{ settings.header_menu_color }};
-  }
+    #shopify-section-{{ section.id }} .s-mega-menu__menu_item a:before {
+        background-color: {{ settings.header_menu_color }};
+    }
 
-  #shopify-section-{{ section.id }} .s-mega-menu__menu_item--active a {
-      color: {{ settings.header_active_menu_color }};
-  }
+    #shopify-section-{{ section.id }} .s-mega-menu__menu_item--active a {
+        color: {{ settings.header_active_menu_color }};
+    }
 
-  #shopify-section-{{ section.id }} .s-mega-menu__menu_item--active a:before {
-      background-color: {{ settings.header_active_menu_color }};
-  }
+    #shopify-section-{{ section.id }} .s-mega-menu__menu_item--active a:before {
+        background-color: {{ settings.header_active_menu_color }};
+    }
 
-  @media screen and (max-width: 990px) {
-      #shopify-section-{{ section.id }} .s-mega-menu__menu a {
-          font-size: {{ settings.header_mob_menu_font_size }}px;
-      }
-  }
+    @media screen and (max-width: 990px) {
+        #shopify-section-{{ section.id }} .s-mega-menu {
+            top: {{ settings.header_padding | divided_by: 3 | times: 2 | plus: settings.header_height }}px;
+        }
+        #shopify-section-{{ section.id }} .s-mega-menu__menu a {
+            font-size: {{ settings.header_mob_menu_font_size }}px;
+        }
+    }
 </style>
 {% for block in section.blocks %}
   <style>
-    #shopify-section-{{ section.id }} .s-mega-menu__col--{{ forloop.index }}{
-        max-width: {{ block.settings.max_width_column }}%;
-    }
+      #shopify-section-{{ section.id }} .s-mega-menu__col--{{ forloop.index }}{
+          max-width: {{ block.settings.max_width_column }}%;
+      }
+      @media screen and (max-width: 990px) {
+          #shopify-section-{{ section.id }} .s-mega-menu__col--{{ forloop.index }}{
+              max-width: 100%;
+          }
+      }
   </style>
 {% endfor %}
 
-<section class="s-mega-menu" data-parent-menu="{{ section.settings.parent_menu }}">
+
+<section class="s-mega-menu" data-parent-menu = "{{ section.settings.parent_menu }}">
   <div class="s-mega-menu__container">
+   <span class="s-mega-menu__close">{% render 'icon-angle' %}</span>
     <div class="s-mega-menu__row">
       {% for block in section.blocks %}
         {%- assign column = block.settings -%}
@@ -70,38 +79,45 @@
           {% if column.menu.links.size > 0 %}
             <nav class="s-mega-menu__nav">
               {% if column.title %}
-                <span>{{ column.title }}</span>
+               <span>{{ column.title }}</span>
               {% endif %}
               <ul class="s-mega-menu__menu">
                 {% for link in column.menu.links %}
                   <li class="s-mega-menu__menu_item {% if link.active %} s-mega-menu__menu_item--active {% endif %}">
                     {{ link.title | link_to: link.url }}
+                    {% if link.links.size > 0 -%}
+                      <ul>
+                        {% for link_child in link.links %}
+                          <li class="{% if link_child.active %}active{% endif %}">
+                            {{ link_child.title | link_to: link_child.url }}
+                          </li>
+                        {% endfor %}
+                      </ul>
+                    {% endif %}
                   </li>
                 {% endfor %}
               </ul>
             </nav>
           {% else %}
             <div class="s-mega-menu__product">
-              {% if column.product_link %}
-                <a href="{{ column.product_link }}">
-              {% endif %}
-              <img src="{{ column.product_image | img_url: 'master' }}" class="s-mega-menu__product_img">
-              <img
-                src="{{ column.product_image_hover | img_url: 'master' }}"
-                class="s-mega-menu__product_img s-mega-menu__product_img--hover"
-              >
-              {% if column.product_link %}
-                </a>
+            {% if column.product_link %}
+              <a href="{{ column.product_link }}">
+                {% endif %}
+                <img src="{{ column.product_image | img_url: 'master' }}" class="s-mega-menu__product_img">
+                <img src="{{ column.product_image_hover | img_url: 'master' }}"
+                     class="s-mega-menu__product_img s-mega-menu__product_img--hover">
+                {% if column.product_link %}
+              </a>
               {% endif %}
             </div>
             {% unless column.title == empty %}
               <div class="s-mega-menu__product-name">
-                {% if column.product_link %}
-                  <a href="{{ column.product_link }}">
-                {% endif %}
-                {{ column.title }}
-                {% if column.product_link %}
-                  </a>
+              {% if column.product_link %}
+                <a href="{{ column.product_link }}">
+                  {% endif %}
+                  {{ column.title }}
+                  {% if column.product_link %}
+                </a>
                 {% endif %}
               </div>
             {% endunless %}
@@ -110,6 +126,7 @@
       {% endfor %}
     </div>
   </div>
+
 </section>
 
 {% schema %}
@@ -117,7 +134,9 @@
   "name": "Mega Menu",
   "tag": "section",
   "enabled_on": {
-    "groups": ["header"]
+    "groups": [
+      "header"
+    ]
   },
   "settings": [
     {
