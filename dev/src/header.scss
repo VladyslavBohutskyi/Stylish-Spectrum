@@ -2,7 +2,7 @@
   box-shadow: 1px -10px 20px 0px grey;
   display: block;
   position: relative;
-
+  z-index: 9;
   header {
     display: flex;
     justify-content: space-between;

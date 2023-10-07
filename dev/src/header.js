@@ -49,6 +49,7 @@ if (!customElements.get('s-header')) {
     toggleMenuMobile() {
       this.querySelector('.s-header__menu_btn').addEventListener(
         "click", () => (
+          document.querySelector('.body_overlay').classList.toggle('active'),
           this.querySelector('.s-header').classList.toggle('s-header--menu-active'),
           document.querySelector('body').classList.toggle('hidden'),
           this.querySelector('.s-header__menu').classList.remove('hide'),
