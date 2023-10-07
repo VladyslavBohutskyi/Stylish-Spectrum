@@ -1,28 +1,59 @@
 {{ 'main-product.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'main-product.js' | asset_url }}" defer></script>
 
-{% comment %} <script>
+<script>
   console.log({{ product | json }})
-</script> {% endcomment %}
+  console.log({{ cart | json }})
+</script>
 
 <main-product>
   <section class="main-product">
     <div class="main-product__row">
       <div class="main-product__gallery">
-
+        <img
+          src="{{ product.featured_image | img_url: 'master' }}"
+          alt="{{ product.featured_image.alt }}"
+          class="featured-image"
+        >
+        {% for image in product.images %}
+          <img src="{{ image | img_url: 'master' }}" alt="{{ image.alt }}">
+        {% endfor %}
       </div>
       <div class="main-product__content">
+        <h1 class="main-product__content_title">{{ product.title }}</h1>
+        <div class="main-product__content_description">
+          {{ product.description }}
+        </div>
+        <div class="main-product__content_form">
 
+          {% form 'product', product %}
+            <input type="number" name="quantity" min="1" value="1">
+            <select name="id">
+              {% for variant in product.variants %}
+                <option value="{{ variant.id }}"
+                  {% if variant == product.selected_or_first_available_variant %}
+                    selected="selected"
+                  {% endif %}
+                >
+                  {{ variant.title }} - {{ variant.price | money }}
+                </option>
+              {% endfor %}
+
+            </select>
+
+            <input type="submit" value="Add to cart">
+
+          {% endform %}
+
+        </div>
       </div>
     </div>
   </section>
 </main-product>
 
-
-
 {% schema %}
-  {
-    "name": "Main Product",
-    "settings": []
-  }
+{
+  "name": "Main Product",
+  "settings": []
+}
 {% endschema %}
