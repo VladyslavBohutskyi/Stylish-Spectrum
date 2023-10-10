@@ -15,7 +15,9 @@ if (!customElements.get('main-product')) {
     }
 
 
+
     variantOnClick(){
+
       let tempVariant = ''
       this.options.forEach( (variant) => {
         tempVariant += `${variant.querySelector('input:checked').value} / `
@@ -23,9 +25,17 @@ if (!customElements.get('main-product')) {
       tempVariant = tempVariant.slice(0, -3)
       let currentVariantId = ''
       this.variants.map((variant) => {
-        variant.title == tempVariant 
-        ? currentVariantId = variant.id
-        : false
+        if(variant.title == tempVariant){
+          (currentVariantId = variant.id, 
+          history.replaceState(null, null, window.location.pathname + `?variant=${variant.id}`))
+          this.querySelector('.featured-image').setAttribute('src', variant.featured_image.src)
+          let currency = this.querySelector('.main-product__content_price').innerHTML[0]
+          this.querySelector('.main-product__content_price').innerHTML = `${currency+(variant.price/100).toFixed(2)}` 
+          variant.available 
+          ? this.querySelector('.main-product__content_available').innerHTML = ''
+          : this.querySelector('.main-product__content_available').innerHTML = 'Sold Out'
+          
+        } 
       })
       this.querySelector('#variant-select').value = currentVariantId
     }

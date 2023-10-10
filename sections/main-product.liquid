@@ -6,6 +6,7 @@
   {{ product.variants | json }}
 {% endcapture %} {% endcomment %}
 
+
 <main-product data-variants = '{{ product.variants | json }}'>
   {% comment %} <script type="product_variant">
     {{ product.variants | json }}
@@ -15,8 +16,8 @@
     <div class="main-product__row">
       <div class="main-product__gallery">
         <img
-          src="{{ product.featured_image | img_url: 'master' }}"
-          alt="{{ product.featured_image.alt }}"
+          src="{{ product.selected_or_first_available_variant.featured_image | img_url: 'master' }}"
+          alt="{{ product.selected_or_first_available_variant.featured_image.alt }}"
           class="featured-image"
         >
         {% for image in product.images %}
@@ -28,6 +29,14 @@
         <div class="main-product__content_description">
           {{ product.description }}
         </div>
+          <span class="main-product__content_price">
+            {{- product.selected_or_first_available_variant.price |  money -}}
+          </span>
+          <span class="main-product__content_available">
+            {% unless product.selected_or_first_available_variant.available %}
+            <span>onhold</span>
+            {% endunless %}
+          </span>
         <div class="main-product__content_form">
 
           {% if product.options.size > 0 %}
@@ -55,7 +64,6 @@
             {% endfor %}
 
           {% endif %}
-
 
           {% form 'product', product %}
             <input type="number" name="quantity" min="1" value="1">
