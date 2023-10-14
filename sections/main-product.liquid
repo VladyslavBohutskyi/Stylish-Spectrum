@@ -1,72 +1,79 @@
+{% comment %}
+  {% capture productVariant %}
+    {{ product.variants | json }}
+  {% endcapture %}
+{% endcomment %}
+{% comment %}
+  <script type="product_variant">
+    {{ product.variants | json }}
+  </script>
+{% endcomment %}
 {{ 'main-product.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'main-product.js' | asset_url }}" defer></script>
 
-
-{% comment %} {% capture productVariant %}
-  {{ product.variants | json }}
-{% endcapture %} {% endcomment %}
-
-
-<main-product data-variants = '{{ product.variants | json }}'>
-  {% comment %} <script type="product_variant">
-    {{ product.variants | json }}
-  </script> {% endcomment %}
-
+<main-product data-variants='{{ product.variants |  json }}'>
+  {% comment %} after auto formating don`t forget change "" on '' {% endcomment %}
   <section class="main-product">
     <div class="main-product__row">
       <div class="main-product__gallery">
         <img
-          src="{{ product.selected_or_first_available_variant.featured_image | img_url: 'master' }}"
+          src="{{ product.selected_or_first_available_variant.featured_image | img_url: "master" }}"
           alt="{{ product.selected_or_first_available_variant.featured_image.alt }}"
           class="featured-image"
         >
         {% for image in product.images %}
-          <img src="{{ image | img_url: 'master' }}" alt="{{ image.alt }}">
+          <img src="{{ image | img_url: "master" }}" alt="{{ image.alt }}">
         {% endfor %}
       </div>
       <div class="main-product__content">
-        <h1 class="main-product__content_title">{{ product.title }}</h1>
+        <div class="main-product__content_header">
+          <div class="main-product__content_title">
+            <h1 class="h2">{{ product.title }}</h1>
+          </div>
+          <div class="main-product__content_price-wrapper">
+            <span class="main-product__content_price">
+              {{- product.selected_or_first_available_variant.price | money -}}
+            </span>
+            <span class="main-product__content_available">
+              {% unless product.selected_or_first_available_variant.available %}
+                Sold Out
+              {% endunless %}
+            </span>
+          </div>
+        </div>
         <div class="main-product__content_description">
           {{ product.description }}
         </div>
-          <span class="main-product__content_price">
-            {{- product.selected_or_first_available_variant.price |  money -}}
-          </span>
-          <span class="main-product__content_available">
-            {% unless product.selected_or_first_available_variant.available %}
-            <span>onhold</span>
-            {% endunless %}
-          </span>
         <div class="main-product__content_form">
-
-          {% if product.options.size > 0 %}
-
+          {% if product.options.size > 0 -%}
             {% for option in product.options %}
               {% assign currentOptions = product.selected_or_first_available_variant.options[forloop.index0] %}
-
               <h6>{{ option }}</h6>
-              <fieldset class="variants-option">
-
+              <fieldset class="variants-option variants-option--{{ option | downcase }}">
                 {% for value in product.options_by_name[option].values %}
-                  <input type="radio" 
-                  name="{{ option }}" 
-                  id="{{ option }}-{{ value }}" 
-                  value="{{ value }}"
-                  {% if currentOptions == value %}
-                  checked 
-                  {% endif %}
+                  <input
+                    type="radio"
+                    name="{{ option }}"
+                    id="{{ option }}-{{ value }}"
+                    value="{{ value }}"
+                    {% if currentOptions == value %}
+                      checked
+                    {% endif %}
                   >
-                  <label for="{{ option }}-{{ value }}">{{ value }}</label>
+                  <label for="{{ option }}-{{ value }}" style="background-color: {{ value }}">{{ value }}</label>
                 {% endfor %}
-
               </fieldset>
-
             {% endfor %}
-
           {% endif %}
 
+          <div class="product-count">
+            <span class="product-count__minus"> - </span>
+            <input type="number" min="1" value="1" class="product-count__value">
+            <span class="product-count__plus"> + </span>
+          </div>
+
           {% form 'product', product %}
-            <input type="number" name="quantity" min="1" value="1">
+            <input type="number" name="quantity" min="1" value="1" id="product-quantity">
             <select name="id" id="variant-select">
               {% for variant in product.variants %}
                 <option
