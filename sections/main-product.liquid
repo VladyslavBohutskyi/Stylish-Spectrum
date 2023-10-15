@@ -11,6 +11,10 @@
 {{ 'main-product.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'main-product.js' | asset_url }}" defer></script>
 
+<script>
+  console.log({{ cart |  json }});
+</script>
+
 <main-product data-variants='{{ product.variants |  json }}'>
   {% comment %} after auto formating don`t forget change "" on '' {% endcomment %}
   <section class="main-product">
@@ -71,6 +75,10 @@
             <input type="number" min="1" value="1" class="product-count__value">
             <span class="product-count__plus"> + </span>
           </div>
+          
+          <button class="add_to_cart">
+            {{ 'product.add_to_cart' | t }}
+          </button>
 
           {% form 'product', product %}
             <input type="number" name="quantity" min="1" value="1" id="product-quantity">

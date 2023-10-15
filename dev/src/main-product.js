@@ -1,3 +1,5 @@
+const pubsub = require("./scripts/pubsub");
+
 if (!customElements.get('main-product')) {
 
   customElements.define('main-product', class MProduct extends HTMLElement {
@@ -10,11 +12,35 @@ if (!customElements.get('main-product')) {
       this.options = this.querySelectorAll('.variants-option')
 
       this.options.forEach(option => {
-        option.addEventListener('change', (e) => {
+        option.addEventListener('change', () => {
           this.variantOnClick()
         })
       })
+
       this.changeCount()
+
+      this.querySelector('.add_to_cart').addEventListener('click', this.addToCart.bind(this))
+
+      PubSub.subscribe(PubSub.EVENTS.cartUpdated, this.showDrawer)
+    }
+
+    addToCart() {
+      const form = this.querySelector('.shopify-product-form')
+      const formUrl = window.theme.shopUrl + window.theme.routes.cart_add_url
+      const formBody = {
+        method: 'POST',
+        body: new FormData(form)
+      }
+
+      fetch(formUrl, formBody).then((response) => {
+        if(response.ok){
+          PubSub.publish(PubSub.EVENTS.cartUpdated)
+        }
+      })
+    }
+
+    showDrawer(){
+      console.log('cartDrawer');
     }
 
     changeCount() {
