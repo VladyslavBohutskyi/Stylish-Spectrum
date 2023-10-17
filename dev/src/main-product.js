@@ -22,6 +22,8 @@ if (!customElements.get('main-product')) {
       this.querySelector('.add_to_cart').addEventListener('click', this.addToCart.bind(this))
 
       PubSub.subscribe(PubSub.EVENTS.cartUpdated, this.showDrawer)
+
+      this.initSliders()
     }
 
     addToCart() {
@@ -33,13 +35,34 @@ if (!customElements.get('main-product')) {
       }
 
       fetch(formUrl, formBody).then((response) => {
-        if(response.ok){
+        if (response.ok) {
           PubSub.publish(PubSub.EVENTS.cartUpdated)
         }
       })
     }
 
-    showDrawer(){
+    initSliders() {
+      const settings = {
+        contain: false,
+        wrapAround: true,
+        pageDots: false,
+        prevNextButtons: false,
+        percentPosition: false
+      }
+      this.slider = new Flickity(this.querySelector('.main-product__gallery-slider'), settings)
+
+      const settingsNav = {
+        asNavFor: this.querySelector('.main-product__gallery-slider'),
+        contain: false,
+        wrapAround: true,
+        pageDots: false,
+        prevNextButtons: false,
+        percentPosition: false
+      }
+      this.sliderNav = new Flickity(this.querySelector('.main-product__gallery-slider_nav'), settingsNav);
+    }
+
+    showDrawer() {
       console.log('cartDrawer');
     }
 
@@ -50,7 +73,7 @@ if (!customElements.get('main-product')) {
       const plus = this.querySelector('.product-count__plus')
 
       minus.addEventListener('click', () => {
-        count.value = count.value - 1
+        if (count.value > 1) count.value = - 1
         productQuantity.value = count.value
       })
       plus.addEventListener('click', () => {
@@ -62,8 +85,7 @@ if (!customElements.get('main-product')) {
       let tempVariant = ''
       this.options.forEach(variant => {
         tempVariant += `${variant.querySelector('input:checked').value} / `
-      }
-      )
+      })
       tempVariant = tempVariant.slice(0, -3)
 
       let currentVariantId = ''
@@ -71,10 +93,17 @@ if (!customElements.get('main-product')) {
         if (variant.title == tempVariant) {
           currentVariantId = variant.id
           history.replaceState(null, null, window.location.pathname + '?variant=' + variant.id)
-          this.querySelector('.featured-image').setAttribute('src', variant.featured_image.src)
+          // this.querySelector('.featured-image').setAttribute('src', variant.featured_image.src)
+          this.querySelectorAll('.main-product__gallery-slider .flickity-slider img').forEach((img, index) => {
+            if (img.getAttribute('src') == variant.featured_image.src) {
+              this.slider.select(index)
+            }
+          })
           const currency = this.querySelector('.main-product__content_price').innerHTML[0]
           this.querySelector('.main-product__content_price').innerHTML = `${currency + (variant.price / 100).toFixed(2)}`
-          variant.available ? this.querySelector('.main-product__content_available').innerHTML = '' : this.querySelector('.main-product__content_available').innerHTML = 'Sold Out'
+          variant.available
+            ? this.querySelector('.main-product').classList.remove('sold-out')
+            : this.querySelector('.main-product').classList.add('sold-out')
         }
       })
 

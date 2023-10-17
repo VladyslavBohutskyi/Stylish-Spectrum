@@ -12,22 +12,36 @@
 <script src="{{ 'main-product.js' | asset_url }}" defer></script>
 
 <script>
-  console.log({{ cart |  json }});
+  console.log({{ product |  json }});
 </script>
 
 <main-product data-variants='{{ product.variants |  json }}'>
   {% comment %} after auto formating don`t forget change "" on '' {% endcomment %}
-  <section class="main-product">
+  <section class="main-product {%  unless product.selected_or_first_available_variant.available %} sold-out {% endunless %}">
     <div class="main-product__row">
       <div class="main-product__gallery">
-        <img
-          src="{{ product.selected_or_first_available_variant.featured_image | img_url: "master" }}"
-          alt="{{ product.selected_or_first_available_variant.featured_image.alt }}"
-          class="featured-image"
-        >
-        {% for image in product.images %}
-          <img src="{{ image | img_url: "master" }}" alt="{{ image.alt }}">
-        {% endfor %}
+        <div class="main-product__gallery-slider">
+          <img
+            src="{{ product.selected_or_first_available_variant.featured_image | img_url: "master" }}"
+            alt="{{ product.selected_or_first_available_variant.featured_image.alt }}"
+            class="featured-image"
+          >
+          {% for image in product.images %}
+            {% unless image == product.selected_or_first_available_variant.featured_image %}
+              <img src="{{ image | img_url: "master" }}" alt="{{ image.alt }}">
+            {% endunless %}
+          {% endfor %}
+        </div>
+        <div class="main-product__gallery-slider_nav">
+          <img src="{{ product.selected_or_first_available_variant.featured_image | img_url: "master" }}"
+               alt="{{ product.selected_or_first_available_variant.featured_image.alt }}"
+               class="featured-image">
+          {% for image in product.images %}
+            {% unless image == product.selected_or_first_available_variant.featured_image %}
+              <img src="{{ image | img_url: "master" }}" alt="{{ image.alt }}">
+            {% endunless %}
+          {% endfor %}
+        </div>
       </div>
       <div class="main-product__content">
         <div class="main-product__content_header">
@@ -39,9 +53,7 @@
               {{- product.selected_or_first_available_variant.price | money -}}
             </span>
             <span class="main-product__content_available">
-              {% unless product.selected_or_first_available_variant.available %}
-                Sold Out
-              {% endunless %}
+              {{ 'product.sold_out' | t }}
             </span>
           </div>
         </div>
@@ -75,7 +87,7 @@
             <input type="number" min="1" value="1" class="product-count__value">
             <span class="product-count__plus"> + </span>
           </div>
-          
+
           <button class="add_to_cart">
             {{ 'product.add_to_cart' | t }}
           </button>

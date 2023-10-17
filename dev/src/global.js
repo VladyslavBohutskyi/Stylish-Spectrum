@@ -1,6 +1,9 @@
 // vendor
 window.Flickity = require('flickity');
 require('lazysizes');
+require('flickity-imagesloaded');
+require('flickity-fullscreen');
+require('flickity-as-nav-for');
 
 // modules
 window.PubSub = require('./scripts/pubsub');
