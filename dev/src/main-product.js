@@ -73,7 +73,7 @@ if (!customElements.get('main-product')) {
       const plus = this.querySelector('.product-count__plus')
 
       minus.addEventListener('click', () => {
-        if (count.value > 1) count.value = - 1
+        if (count.value > 1) count.value = count.value - 1
         productQuantity.value = count.value
       })
       plus.addEventListener('click', () => {
