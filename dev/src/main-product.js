@@ -93,7 +93,7 @@ if (!customElements.get('main-product')) {
         if (variant.title == tempVariant) {
           currentVariantId = variant.id
           history.replaceState(null, null, window.location.pathname + '?variant=' + variant.id)
-          // this.querySelector('.featured-image').setAttribute('src', variant.featured_image.src)
+          this.querySelector('.featured-image').setAttribute('src', variant.featured_image.src)
           this.querySelectorAll('.main-product__gallery-slider .flickity-slider img').forEach((img, index) => {
             if (img.getAttribute('src') == variant.featured_image.src) {
               this.slider.select(index)
