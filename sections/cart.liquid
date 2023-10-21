@@ -1,11 +1,49 @@
 {{ 'cart.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'cart.js' | asset_url }}" defer></script>
 
-<cart-main class="cart_container" data-sectionId="{{ section.id }}">
-  <div class="cart_line-items">
+<script>
+  console.log({{ cart |  json }});
+</script>
 
+<cart-main data-sectionId="{{ section.id }}">
+  <div class="cart__container">
+    <div class="cart__products">
+  {% for product in cart.items %}
+    <div class="cart__item">
+      <div class="cart__item_image">
+        <img src='{{ product.featured_image.url |  image_url: '300x300' }}' alt="{{ product.featured_image.alt }}">
+      </div>
+      <div class="cart__item_info">
+        <a>{{ product.url }}</a>
+      </div>
+      <div class="cart__item_count">
+        <div class="cart__item_count-qty">
+          <span class="change_qty">{% render 'icon-minus' %}</span>
+          <span class="current_qty">{{ product.quantity }}</span> 
+          <span class="change_qty">{% render 'icon-plus' %}</span>
+        </div>
+        <span class="del_product">{% render 'icon-trash' %}</span>
+      </div>
+      <div class="cart__item_price">
+        <span>{{ product.line_price }}</span>
+      </div>
+    </div>
+  {% endfor %}
+    </div>
+    <div class="cart__subtotal">
+      <div class="cart__subtotal_header">
+        <span>Subtotal: </span>
+        <span class="cart__subtotal_header-price">{{ cart.total_price | money }}</span>
+      </div>
+      <a href="/checkout">
+        Checkout
+      </a>
+
+
+    </div>
   </div>
 </cart-main>
+
 {% schema %}
 {
   "name": "cart",

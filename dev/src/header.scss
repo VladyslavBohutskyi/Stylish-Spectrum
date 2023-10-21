@@ -257,6 +257,24 @@
         transition: all 0.2s ease-in-out;
       }
     }
+    &_cart{
+      position: relative;
+      span{
+        position: absolute;
+        display: flex;
+        height: 15px;
+        width: 15px;
+        font-size: 10px;
+        background-color: black;
+        color: white;
+        border-radius: 50%;
+        right: -4px;
+        top: -1px;
+        align-items: center;
+        justify-content: center;
+        padding: 1px;
+      }
+    }
   }
 
   &--menu-active {

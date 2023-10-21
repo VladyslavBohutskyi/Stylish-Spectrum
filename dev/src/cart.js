@@ -1,5 +1,5 @@
 if (!customElements.get('cart-main')) {
-  customElements.define('cart-main', class CustomProduct extends HTMLElement {
+  customElements.define('cart-main', class CartMain extends HTMLElement {
     constructor() {
       super();
     }

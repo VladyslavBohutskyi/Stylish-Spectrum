@@ -128,8 +128,9 @@
       <a href="{{ routes.account_url }}">
         {% render 'icon-account' %}
       </a>
-      <a href="{{ routes.cart_url }}">
+      <a href="{{ routes.cart_url }}" class="s-header__account_cart">
         {% render 'icon-cart' %}
+        <span>{{ cart.item_count }}</span>
       </a>
     </div>
   </header>
