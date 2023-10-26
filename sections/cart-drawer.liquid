@@ -1,0 +1,61 @@
+{{ 'cart-drawer.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'cart-drawer.js' | asset_url }}" defer></script>
+
+
+<cart-drawer data-section_id = "{{ section.id }}" class = "cart-drawer">
+  <div class="cart-drawer__close"></div>
+  <div class="cart__container">
+    <div class="cart__products">
+      <div class="cart__products_title">
+        <h4>Your cart</h4>
+      </div>
+      {% for product in cart.items %}
+        <div class="cart__item">
+          <div class="cart__item_image">
+            <img src="{{ product.image | img_url: '300x300' }}" alt="{{ product.featured_image.alt }}">
+          </div>
+          <div class="cart__item_info">
+            <div class="cart__item_title">
+              <a href="{{ product.url }}">{{ product.title }}</a>
+            </div>
+            <div class="cart__item_count">
+              <div class="cart__item_count-qty">
+                <span class="change_qty" data-quantity = "{{ product.quantity | minus: 1 }}" data-variant_id = "{{ product.id }}" >{% render 'icon-minus' %}</span>
+                <span class="current_qty">{{ product.quantity }}</span>
+                <span class="change_qty" data-quantity = "{{ product.quantity | plus: 1 }}" data-variant_id = "{{ product.id }}" >{% render 'icon-plus' %}</span>
+              </div>
+              <span class="del_product change_qty" data-quantity = 0 data-variant_id = "{{ product.id }}">{% render 'icon-trash' %}</span>
+            </div>
+            <div class="cart__item_price">
+              <span>{{ product.line_price | money }}</span>
+            </div>
+          </div>
+
+        </div>
+      {% endfor %}
+    </div>
+    <div class="cart__subtotal" data-item_count = '{{ cart.item_count }}'> 
+      {% comment %} chanege "" to ''              ^ {% endcomment %}
+      <div class="cart__subtotal_header">
+        <span>Subtotal: </span>
+        <span class="cart__subtotal_header-price">{{ cart.total_price | money }}</span>
+      </div>
+      <a href="/cart">
+        View cart
+      </a>
+      <a href="/checkout">
+        Checkout
+      </a>
+
+    </div>
+  </div>
+
+</cart-drawer>
+{% schema %}
+{
+  "name": "cart-drawer",
+  "tag": "section",
+  "class": "section",
+  "settings": []
+}
+{% endschema %}

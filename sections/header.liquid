@@ -135,10 +135,15 @@
       <a href="{{ routes.account_url }}">
         {% render 'icon-account' %}
       </a>
-      <a href="{{ routes.cart_url }}" class="s-header__account_cart">
+      <a href="#" class="s-header__account_cart">
         {% render 'icon-cart' %}
         <span class="header_cart_count">{{ cart.item_count }}</span>
       </a>
+      {% if template != 'cart' %}
+        <script defer>
+          document.querySelector('.s-header__account_cart').addEventListener('click', () => document.querySelector('.cart-drawer').classList.add('active'))
+        </script>
+        {% endif %}
     </div>
   </header>
 </section>
