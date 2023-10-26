@@ -9,14 +9,24 @@ if (!customElements.get('cart-main')) {
     }
 
     initCart() {
-
       this.querySelectorAll('.change_qty').forEach((btn) => {
         btn.addEventListener('click', (e) => {
-          this.changeCount(e.target.dataset.variant_id, e.target.dataset.quantity)
+          this.changeCount(btn.dataset.variant_id, btn.dataset.quantity)
         })
       })
 
     }
+
+    updateCart(){
+      fetch(window.theme.shopUrl + `?section_id=${this.dataset.section_id}`)
+      .then((res) => res.text())
+      .then((data) => {
+        const html = new DOMParser().parseFromString(data, 'text/html');
+        this.querySelector('.cart__container').innerHTML = html.querySelector('.cart__container').innerHTML
+        this.initCart()
+      })
+    }
+    
 
     changeCount(id, quantity) {
       const requestOptions = {
@@ -40,7 +50,8 @@ if (!customElements.get('cart-main')) {
 
         })
         .then((data) => {
-          console.log(data)
+          document.querySelector('.header_cart_count').innerHTML = data.item_count
+          this.updateCart()
         })
 
     }
