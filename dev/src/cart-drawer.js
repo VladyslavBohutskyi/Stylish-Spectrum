@@ -6,7 +6,7 @@ if (!customElements.get('cart-drawer')) {
 
     connectedCallback() {
       PubSub.subscribe('cart-updated', this.updateCart.bind(this))
-      PubSub.subscribe('cart-updated', this.openCart.bind(this))
+      PubSub.subscribe('open-drawer', this.openCart.bind(this))
       PubSub.subscribe('cart-updated', this.updateHeaderCount.bind(this))
       this.initCart()
     }
@@ -33,15 +33,13 @@ if (!customElements.get('cart-drawer')) {
         .then((res) => res.text())
         .then((data) => {
           const html = new DOMParser().parseFromString(data, "text/html");
-          this.querySelector('.cart__container').innerHTML = html.querySelector('.cart__container').innerHTML
+          this.querySelector('.cart-container').innerHTML = html.querySelector('.cart-container').innerHTML
           this.initCart()
         })
     }
 
     updateHeaderCount(){
-      console.log('test');
-      console.log(this.querySelector('.cart__subtotal').dataset.item_count)
-      document.querySelector('.header_cart_count').innerHTML = this.querySelector('.cart__subtotal').dataset.item_count
+      document.querySelector('.header_cart_count').innerHTML = this.querySelector('.cart-container__subtotal').dataset.item_count
     }
 
     changeCount(id, quantity){

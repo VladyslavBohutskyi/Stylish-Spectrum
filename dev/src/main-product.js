@@ -37,6 +37,7 @@ if (!customElements.get('main-product')) {
       fetch(formUrl, formBody).then((response) => {
         if (response.ok) {
           PubSub.publish(PubSub.EVENTS.cartUpdated)
+          PubSub.publish(PubSub.EVENTS.openCartDrawer)
         }
       })
     }
