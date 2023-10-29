@@ -7,7 +7,7 @@ if (!customElements.get('cart-drawer')) {
     connectedCallback() {
       PubSub.subscribe('cart-updated', this.updateCart.bind(this))
       PubSub.subscribe('open-drawer', this.openCart.bind(this))
-      PubSub.subscribe('cart-updated', this.updateHeaderCount.bind(this))
+      this.querySelector('.cart-drawer__close').addEventListener('click', this.closeCart.bind(this))
       this.initCart()
     }
 
@@ -24,7 +24,7 @@ if (!customElements.get('cart-drawer')) {
           this.changeCount(btn.dataset.variant_id, btn.dataset.quantity)
         })
       })
-      this.querySelector('.cart-drawer__close').addEventListener('click', this.closeCart.bind(this))
+      this.querySelector('.icon-close').addEventListener('click', this.closeCart.bind(this))
     }
 
 
@@ -36,10 +36,6 @@ if (!customElements.get('cart-drawer')) {
           this.querySelector('.cart-container').innerHTML = html.querySelector('.cart-container').innerHTML
           this.initCart()
         })
-    }
-
-    updateHeaderCount(){
-      document.querySelector('.header_cart_count').innerHTML = this.querySelector('.cart-container__subtotal').dataset.item_count
     }
 
     changeCount(id, quantity){
@@ -63,7 +59,7 @@ if (!customElements.get('cart-drawer')) {
           }
         })
         .then((data) => {
-          this.updateCart()
+          PubSub.publish('cart-updated')
         })
 
     }

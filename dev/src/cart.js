@@ -5,6 +5,7 @@ if (!customElements.get('cart-main')) {
     }
 
     connectedCallback() {
+      PubSub.subscribe('cart-updated', () => this.updateCart())
       this.initCart()
     }
 
@@ -50,8 +51,10 @@ if (!customElements.get('cart-main')) {
 
         })
         .then((data) => {
-          document.querySelector('.header_cart_count').innerHTML = data.item_count
-          this.updateCart()
+          // document.querySelector('.header_cart_count').innerHTML = data.item_count
+          // this.updateCart()
+
+          PubSub.publish('cart-updated')
         })
 
     }

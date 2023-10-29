@@ -1,3 +1,5 @@
+const pubsub = require("./scripts/pubsub");
+
 if (!customElements.get('s-header')) {
 
   customElements.define('s-header', class SHeader extends HTMLElement {
@@ -8,6 +10,8 @@ if (!customElements.get('s-header')) {
     connectedCallback() {
       this.megaMenus = Array.from(this.querySelectorAll('.s-mega-menu'))
       this.menuItems = this.querySelectorAll('.s-header__menu_item')
+      this.querySelector('.s-header__account_cart').addEventListener('click', this.opeenCartDrawer)
+      PubSub.subscribe('cart-updated', this.updateCount.bind(this))
       this.menuItems.forEach((menuItem) => {
         this.addClassParentMenu(menuItem)
         this.openMegaMenuMobile(menuItem)
@@ -16,6 +20,18 @@ if (!customElements.get('s-header')) {
       })
       this.toggleMenuMobile()
       this.closeMegaMenuMobile()
+    }
+
+    opeenCartDrawer(){
+      PubSub.publish('open-drawer')
+    }
+
+    updateCount(){
+      fetch(window.theme.shopUrl + '/cart.js')
+        .then((res) => res.json())
+        .then((data) => {
+          this.querySelector('.header_cart_count').innerHTML = data.item_count
+        })
     }
 
     addClassParentMenu(menuItem) {
