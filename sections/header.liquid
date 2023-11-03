@@ -1,115 +1,113 @@
 {{ 'header.css' | asset_url | stylesheet_tag }}
 
 <style>
-    #shopify-section-{{ section.id }} .s-header {
-        background-color: {{ settings.header_bg_color }};
-        padding: {{ settings.header_padding }}px 15px;
-    }
+  #shopify-section-{{ section.id }} .s-header {
+      background-color: {{ settings.header_bg_color }};
+      padding: {{ settings.header_padding }}px 15px;
+  }
 
-    #shopify-section-{{ section.id }} header {
-        max-width: {{ settings.header_max_width }}px;
-        height: {{ settings.header_height }}px;
-    }
+  #shopify-section-{{ section.id }} header {
+      max-width: {{ settings.header_max_width }}px;
+      height: {{ settings.header_height }}px;
+  }
 
-    #shopify-section-{{ section.id }} .s-header__logo {
-        width: {{ settings.header_logo_width }}px;
-    }
+  #shopify-section-{{ section.id }} .s-header__logo {
+      width: {{ settings.header_logo_width }}px;
+  }
 
-    #shopify-section-{{ section.id }} .s-header__menu {
-        justify-content: {{ settings.header_menu_position }};
-    }
+  #shopify-section-{{ section.id }} .s-header__menu {
+      justify-content: {{ settings.header_menu_position }};
+  }
 
-    #shopify-section-{{ section.id }} .s-header__menu_item a {
-        color: {{ settings.header_menu_color }};
-        font-family: {{ settings.menu_font_heading.family }};
-        font-size: {{ settings.header_menu_font_size }}px;
-    }
+  #shopify-section-{{ section.id }} .s-header__menu_item a {
+      color: {{ settings.header_menu_color }};
+      font-family: {{ settings.menu_font_heading.family }};
+      font-size: {{ settings.header_menu_font_size }}px;
+  }
 
-    #shopify-section-{{ section.id }} .s-header__menu_item a:before {
-        background-color: {{ settings.header_menu_color }};
-    }
+  #shopify-section-{{ section.id }} .s-header__menu_item a:before {
+      background-color: {{ settings.header_menu_color }};
+  }
 
-    #shopify-section-{{ section.id }} .s-header__menu_item--active > a {
-        color: {{ settings.header_active_menu_color }};
-    }
+  #shopify-section-{{ section.id }} .s-header__menu_item--active > a {
+      color: {{ settings.header_active_menu_color }};
+  }
 
-    #shopify-section-{{ section.id }} .s-header__menu_item--parent span > svg , #shopify-section-{{ section.id }} .s-mega-menu__close svg {
-        fill: {{ settings.header_menu_color }};
-    }
+  #shopify-section-{{ section.id }} .s-header__menu_item--parent span > svg , #shopify-section-{{ section.id }} .s-mega-menu__close svg {
+      fill: {{ settings.header_menu_color }};
+  }
 
-    #shopify-section-{{ section.id }} .s-header__menu_item--parent.s-header__menu_item--active span > svg {
-        fill: {{ settings.header_active_menu_color }};
-    }
+  #shopify-section-{{ section.id }} .s-header__menu_item--parent.s-header__menu_item--active span > svg {
+      fill: {{ settings.header_active_menu_color }};
+  }
 
-    #shopify-section-{{ section.id }} .s-header__menu_item--active > a:before {
-        background-color: {{ settings.header_active_menu_color }};
-    }
+  #shopify-section-{{ section.id }} .s-header__menu_item--active > a:before {
+      background-color: {{ settings.header_active_menu_color }};
+  }
 
-    #shopify-section-{{ section.id }} .s-header__account svg path {
-        fill: {{ settings.header_menu_color }};
-    }
+  #shopify-section-{{ section.id }} .s-header__account svg path {
+      fill: {{ settings.header_menu_color }};
+  }
 
-    #shopify-section-{{ section.id }} .s-header__account a:hover svg path {
-        fill: {{ settings.header_active_menu_color }};
-    }
+  #shopify-section-{{ section.id }} .s-header__account a:hover svg path {
+      fill: {{ settings.header_active_menu_color }};
+  }
 
-    #shopify-section-{{ section.id }} .s-header__menu-btn svg path {
-        fill: {{ settings.header_menu_color }};
-    }
+  #shopify-section-{{ section.id }} .s-header__menu-btn svg path {
+      fill: {{ settings.header_menu_color }};
+  }
 
-    @media screen and (max-width: 990px) {
-        #shopify-section-{{ section.id }} .s-header__menu_item--parent:hover ul {
-            top: calc(100% + 10px);
-        }
-        #shopify-section-{{ section.id }} .s-header__menu {
-            justify-content: unset;
-        }
-        #shopify-section-{{ section.id }} .s-header__menu_item_arrow, .s-mega-menu__close {
-            border: 1px solid {{ settings.header_menu_color }};
-        }
-        #shopify-section-{{ section.id }} .s-header__menu_item--active .s-header__menu_item_arrow {
-            border: 1px solid  {{ settings.header_active_menu_color }};
-        }
+  @media screen and (max-width: 990px) {
+      #shopify-section-{{ section.id }} .s-header__menu_item--parent:hover ul {
+          top: calc(100% + 10px);
+      }
+      #shopify-section-{{ section.id }} .s-header__menu {
+          justify-content: unset;
+      }
+      #shopify-section-{{ section.id }} .s-header__menu_item_arrow, .s-mega-menu__close {
+          border: 1px solid {{ settings.header_menu_color }};
+      }
+      #shopify-section-{{ section.id }} .s-header__menu_item--active .s-header__menu_item_arrow {
+          border: 1px solid  {{ settings.header_active_menu_color }};
+      }
 
-        #shopify-section-{{ section.id }} .s-header__menu a {
-            font-size: {{ settings.header_mob_menu_font_size }}px;
-        }
-        #shopify-section-{{ section.id }} .s-header {
-            padding: {{ settings.header_padding | divided_by: 3 | floor }}px 15px;
-        }
+      #shopify-section-{{ section.id }} .s-header__menu a {
+          font-size: {{ settings.header_mob_menu_font_size }}px;
+      }
+      #shopify-section-{{ section.id }} .s-header {
+          padding: {{ settings.header_padding | divided_by: 3 | floor }}px 15px;
+      }
 
-        #shopify-section-{{ section.id }} .s-header__nav {
-            background-color: {{ settings.header_bg_color }};
-            top: {{ settings.header_padding | divided_by: 3 | times: 2 | plus: settings.header_height }}px;
-        }
-    }
+      #shopify-section-{{ section.id }} .s-header__nav {
+          background-color: {{ settings.header_bg_color }};
+          top: {{ settings.header_padding | divided_by: 3 | times: 2 | plus: settings.header_height }}px;
+      }
+  }
 </style>
 
 <section class="s-header">
   <header>
-     <span class="s-header__menu_btn">
+    <span class="s-header__menu_btn">
       {% render 'icon-hamburger' %}
-       {% render 'icon-close' %}
+      {% render 'icon-close' %}
     </span>
     {% if settings.header_logo %}
       <div class="s-header__logo">
-      {%- if request.page_type != 'index' -%}
-        <a href="{{ routes.root_url }}">
-          {% endif %}
-          <img src="{{ settings.header_logo | img_url: 'master' }}" alt="{{ settings.header_logo.alt }}">
-          {%- if request.page_type != 'index' -%}
-        </a>
+        {%- if request.page_type != 'index' -%}
+          <a href="{{ routes.root_url }}">
+        {% endif %}
+        <img src="{{ settings.header_logo | img_url: 'master' }}" alt="{{ settings.header_logo.alt }}">
+        {%- if request.page_type != 'index' -%}
+          </a>
         {% endif %}
       </div>
     {% endif %}
     <nav class="s-header__nav">
-
       <ul class="s-header__menu">
         {% for link in settings.header_menu.links %}
-
           <li class="s-header__menu_item {% if link.active %} s-header__menu_item--active {% endif %} {% if link.links.size > 0 -%} s-header__menu_item--parent {% endif %}">
             {{ link.title | link_to: link.url }}
-           <span data-menu-name = "{{ link.title }}" class="s-header__menu_item_arrow"> {% render 'icon-angle' %} </span>
+            <span data-menu-name="{{ link.title }}" class="s-header__menu_item_arrow"> {% render 'icon-angle' %} </span>
             {% if link.links.size > 0 -%}
               <ul>
                 {% for link_child in link.links %}
@@ -120,15 +118,15 @@
               </ul>
             {% endif %}
           </li>
-
         {% endfor %}
       </ul>
-
     </nav>
     <div class="s-header__account">
-      <a href="{{ routes.search_url }}">
-        {% render 'icon-search' %}
-      </a>
+      {% if template != 'search' %}
+        <span class="s-header__open-search">
+          {% render 'icon-search' %}
+        </span>
+      {% endif %}
       <a href="{{ routes.account_url }}">
         {% render 'icon-account' %}
       </a>

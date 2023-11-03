@@ -5,22 +5,39 @@
 
 </script>
 
-<search-main>
+<search-main class="search-main">
   <div class="container">
-    SEARCH
+    <form action="{{ routes.search_url }}">
+      <input type="text"
+             placeholder="Search"
+             name="q"
+             value="{{ search.terms | escape }}"
+      >
+      <input type="submit" value="Search">
+    </form>
+
+    <div class="search-main__results">
+      {% for item in search.results %}
+        <h2>{{ item.title }}</h2>
+       <script>
+         console.log({{ item | json }})
+       </script>
+      {% endfor %}
+    </div>
   </div>
 </search-main>
 
 
 {% schema %}
-  {
-    "name": "Search",
-    "tag": "section",
-    "settings": [
-      {
-       "type": "header",
-       "content": "section settings"
-      }
-    ]
-  }
+{
+  "name": "Main search",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section settings"
+    }
+  ]
+}
 {% endschema %}

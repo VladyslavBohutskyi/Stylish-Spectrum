@@ -1,0 +1,70 @@
+{{ 'section-popup-search.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'section-popup-search.js' | asset_url }}" defer></script>
+
+<script></script>
+
+<style>
+  #shopify-section-{{ section.id }} .popup-search{
+    background: {{ section.settings.bg_color }};
+  }
+  #shopify-section-{{ section.id }} .container{
+    max-width: {{ section.settings.container_width }}px;
+  }
+</style>
+
+<popup-search class="popup-search">
+  <div class="container">
+    <div class="popup-search__header">
+      <h2>Search</h2>
+      {% render 'icon-close' %}
+    </div>
+    <div class="popup-search__form">
+      <input type="text" class="popup-search__input">
+      <button class="popup-search__btn">
+      Search
+      </button>
+
+      <form action="{{ routes.search_url }}" class="popup-search__form-hidden">
+        <input type="text" 
+        placeholder="Search" 
+        class="form-hidden-input" 
+        name="q" 
+        value="{{ search.terms |  escape }}">
+        <input type="hiden" name="type" value="product,page">
+        <input type="hiden" name="option[unavaiulable_products]" value="hide">
+        <input type="hiden" name="option[prefix]" value="last">
+        <input type="submit" value="Search">
+      </form>
+    </div>
+    <div class="popup-search__results"></div>
+  </div>
+</popup-search>
+
+{% schema %}
+{
+  "name": "Popup search",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section settings"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "container_width",
+      "min": 800,
+      "max": 1800,
+      "step": 10,
+      "unit": "px",
+      "label": "Container width",
+      "default": 1300
+    }
+  ]
+}
+{% endschema %}

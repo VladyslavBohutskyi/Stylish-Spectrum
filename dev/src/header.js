@@ -20,10 +20,17 @@ if (!customElements.get('s-header')) {
       })
       this.toggleMenuMobile()
       this.closeMegaMenuMobile()
+      if(this.querySelector('.s-header__open-search')){
+        this.querySelector('.s-header__open-search').addEventListener('click', () => this.openSearch())
+      }
     }
 
     opeenCartDrawer(){
       PubSub.publish('open-drawer')
+    }
+
+    openSearch(){
+      PubSub.publish('open-search')
     }
 
     updateCount(){

@@ -248,12 +248,13 @@
 
   &__account {
     display: flex;
-
+    .s-header__open-search{
+      cursor: pointer;
+    }
     svg {
       width: 20px;
       height: 20px;
       margin: 10px;
-
       path {
         transition: all 0.2s ease-in-out;
       }
