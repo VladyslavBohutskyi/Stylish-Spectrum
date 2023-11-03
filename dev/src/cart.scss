@@ -35,7 +35,10 @@
         display: flex;
         padding: 20px;
         flex: 1;
-      }
+        @media (max-width: 760px) {
+         flex-direction: column;
+        }
+        }
       &_title{
         flex: 1;
         a{
@@ -46,8 +49,14 @@
         display: flex;
         align-items: flex-start;
         padding: 0 20px;
+        @media (max-width: 760px) {
+          padding: 0;
+        }
         span{
           cursor: pointer;
+          svg{
+            pointer-events: none;
+          }
         }
         &-qty{
           display: flex;
@@ -55,7 +64,8 @@
           width: 120px;
           margin-right: 30px;
           justify-content: space-between;
-          .current_qty{
+
+            .current_qty{
 
           }
           .change_qty{
@@ -69,6 +79,11 @@
       &_price{
         width: 150px;
         text-align: right;
+        @media (max-width: 760px) {
+          text-align: left;
+          margin-top: 14px;
+          font-size: 16px;
+        }
       }
     }
   }
