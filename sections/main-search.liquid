@@ -1,0 +1,26 @@
+{{ 'section-search.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'section-search.js' | asset_url }}" defer></script>
+
+<script>
+
+</script>
+
+<search-main>
+  <div class="container">
+    SEARCH
+  </div>
+</search-main>
+
+
+{% schema %}
+  {
+    "name": "Search",
+    "tag": "section",
+    "settings": [
+      {
+       "type": "header",
+       "content": "section settings"
+      }
+    ]
+  }
+{% endschema %}
