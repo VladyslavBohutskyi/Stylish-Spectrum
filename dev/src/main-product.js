@@ -1,4 +1,4 @@
-const pubsub = require("./scripts/pubsub");
+// const pubsub = require("./scripts/pubsub");
 
 if (!customElements.get('main-product')) {
 

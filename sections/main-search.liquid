@@ -1,32 +1,29 @@
 {{ 'section-search.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'section-search.js' | asset_url }}" defer></script>
 
-<script>
-
-</script>
+<script></script>
 
 <search-main class="search-main">
   <div class="container">
     <form action="{{ routes.search_url }}">
-      <input type="text"
-             placeholder="Search"
-             name="q"
-             value="{{ search.terms | escape }}"
+      <input
+        type="text"
+        placeholder="Search"
+        name="q"
+        value="{{ search.terms | escape }}"
       >
       <input type="submit" value="Search">
     </form>
 
     <div class="search-main__results">
       {% for item in search.results %}
-        <h2>{{ item.title }}</h2>
-       <script>
-         console.log({{ item | json }})
-       </script>
+        <div class="search-main__results_col">
+          {% render 'product-card', product: item %}
+        </div>
       {% endfor %}
     </div>
   </div>
 </search-main>
-
 
 {% schema %}
 {

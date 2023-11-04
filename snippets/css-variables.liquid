@@ -9,6 +9,8 @@
 	{{ font_body_bold_italic | font_face: font_display: 'swap' }}
 
     :root {
+        --container-width: {{ settings.container_width }}px;
+
         --color-background: {{ settings.color_background }};
         --color-text: {{ settings.color_text }};
         --color-heading: {{ settings.color_heading }};

@@ -1,0 +1,27 @@
+{{ 'product-card.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'product-card.js' | asset_url }}" defer></script>
+
+<script>
+  console.log({{ product |  json }});
+</script>
+
+<product-card class="product-card">
+  <div class="product-card__warapper">
+    <div class="product-card__wrapper">
+      <div class="product-card__img">
+        <img src="{{ product.featured_image |  img_url: 'master' }}" alt="{{ product.featured_image.alt }}">
+      </div>
+      <div class="product-card__content">
+        <div>
+          <a href="{{ product.url }}" class="product-card__content_title">{{ product.title }}</a>
+          <span class="product-card__content_price">{{ product.price | money }}</span>
+        </div>
+        <div>
+          <button class="product-card__content_add btn-underline">{% render 'icon-cart' %}</button>
+          <a href="{{ product.url }}" class="product-card__content_view">View product</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</product-card>
