@@ -5,7 +5,7 @@ if (!customElements.get('product-card')) {
     }
 
     connectedCallback() {
-
+      this.querySelector('.product-card__content_add').addEventListener('click', () => this.addToCart())
     }
 
     addToCart() {
@@ -19,7 +19,7 @@ if (!customElements.get('product-card')) {
       fetch(formUrl, formBody).then((response) => {
         if (response.ok) {
           PubSub.publish(PubSub.EVENTS.cartUpdated)
-          PubSub.publish(PubSub.EVENTS.openCartDrawer)
+          // PubSub.publish(PubSub.EVENTS.openCartDrawer)
         }
       })
     }
