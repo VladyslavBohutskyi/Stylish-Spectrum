@@ -1,2 +1,407 @@
 {{ 'section-review-slider.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'section-review-slider.js' | asset_url }}" defer></script>
+
+{% assign slides_count = section.settings.number_of_slides | abs %}
+{% assign slides_count_tablet = section.settings.number_of_slides_tablet | abs %}
+{% assign slides_count_mobile = section.settings.number_of_slides_mobile | abs %}
+
+<style>
+
+    #shopify-section-{{ section.id }} .s-review-slider {
+        margin-top: {{ section.settings.margin_top_desktop }}px;
+        margin-bottom: {{ section.settings.margin_bottom_desktop }}px;
+        padding-top: {{ section.settings.padding_top_desktop }}px;
+        padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    }
+
+    #shopify-section-{{ section.id }} .s-review-slider__header {
+        margin-bottom: {{ section.settings.margin_bottom_content }}px;
+    }
+
+    #shopify-section-{{ section.id }} .s-review-slider__header * {
+        color: {{ section.settings.content_color }};
+    }
+
+    #shopify-section-{{ section.id }} .s-review-slider__slider {
+        max-width: {{section.settings.content_width}}px;
+    {% if section.settings.slider_apply == false %} display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    {% endif %}
+    }
+
+    #shopify-section-{{ section.id }} .s-review-slider__bg {
+        filter: brightness({% if section.settings.bg_brightness  == 0 %}1{% else %} 0.{{section.settings.bg_brightness | minus: 9 | abs}} {% endif %});
+    }
+
+    #shopify-section-{{ section.id }} .s-review-slider__review.full-height {
+        height: 100%;
+    }
+
+    #shopify-section-{{ section.id }} .flickity-prev-next-button {
+        color: {{ section.settings.review_bg_color }};
+    }
+
+    #shopify-section-{{ section.id }} .s-review-slider__review {
+        background-color: {{ section.settings.review_bg_color }};
+        color: {{ section.settings.review_text_color }};
+        width: calc(100% / {{ section.settings.number_of_slides }} - {{ section.settings.spacing }}px);
+        margin: {{ section.settings.spacing | divided_by: 2 }}px;
+    }
+
+    #shopify-section-{{ section.id }} .s-review-slider__review_foto {
+        height: {{ section.settings.foto_size }}px;
+        width: {{ section.settings.foto_size }}px;
+    }
+
+    #shopify-section-{{ section.id }} .s-review-slider__review h5 {
+        color: {{ section.settings.client_name_color }};
+    }
+
+    @media screen and (max-width: 990px) {
+        #shopify-section-{{ section.id }} .s-review-slider__review {
+            width: calc(100% /{{ section.settings.number_of_slides_tablet }});
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+        #shopify-section-{{ section.id }} .s-review-slider {
+            margin-top: {{ section.settings.margin_top_mobile }}px;
+            margin-bottom: {{ section.settings.margin_bottom_mobile }}px;
+            padding-top: {{ section.settings.padding_top_mobile }}px;
+            padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+        }
+
+        #shopify-section-{{ section.id }} .s-review-slider__review {
+            width: calc(100% / {{ section.settings.number_of_slides_mobile }});
+        }
+
+        #shopify-section-{{ section.id }} .s-review-slider__header {
+            margin-bottom: {{ section.settings.margin_bottom_content | divided_by: 2  }}px;
+        }
+
+    }
+
+</style>
+
+
+{% if section.settings.autoplay %}
+  {% assign speedSlider = section.settings.speed %}
+{% else %}
+  {% assign speedSlider = false %}
+{% endif %}
+
+<s-review-slider data-speed={{ speedSlider }} data-slider_apply={{ section.settings.slider_apply }}>
+  <section class="s-review-slider">
+    {% if section.settings.bg_image %}
+      <img
+            src="{{ section.settings.bg_image | img_url: 'master' }}"
+            alt="{{ section.settings.bg_image.alt }}"
+            class="s-review-slider__bg">
+    {% endif %}
+    <div class="s-review-slider__header">
+      {{ section.settings.title }}
+      {{ section.settings.subtitle }}
+    </div>
+    <div class="s-review-slider__slider">
+      {% for block in section.blocks %}
+        {% assign client = block.settings %}
+        <div class="s-review-slider__review">
+          {% if client.client_foto %}
+            <div class="s-review-slider__review_foto">
+              <img src="{{ client.client_foto | img_url: 'master' }}" alt="{{ client.client_name }}">
+            </div>
+          {% endif %}
+          <h5>{{ client.client_name }}</h5>
+          <p>{{ client.review }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+</s-review-slider>
+
+{% schema %}
+{
+  "name": "Review slider",
+  "settings": [
+    {
+      "type": "range",
+      "id": "margin_top_desktop",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "label": "Margin top desktop",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_top_mobile",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "label": "Margin top mobile",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom_desktop",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "label": "Margin bottom desktop",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom_mobile",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "label": "Margin bottom mobile",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "label": "Padding top desktop",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "label": "Padding top mobile",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "label": "Padding bottom desktop ",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "label": "Padding bottom mobile",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "content_width",
+      "min": 600,
+      "max": 1600,
+      "step": 10,
+      "unit": "px",
+      "label": "Content width",
+      "default": 1300
+    },
+    {
+      "type": "range",
+      "id": "spacing",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "label": "spacing between columns",
+      "default": 16
+    },
+    {
+      "type": "checkbox",
+      "id": "slider_apply",
+      "label": "Slider apply",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Slider autoplay",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "speed",
+      "min": 1000,
+      "max": 9000,
+      "step": 100,
+      "unit": "ms",
+      "label": "Autoplay speed",
+      "default": 3000
+    },
+    {
+      "type": "select",
+      "id": "number_of_slides",
+      "label": "Number of slides desktop",
+      "options": [
+        {
+          "value": "1",
+          "label": "One"
+        },
+        {
+          "value": "2",
+          "label": "Two"
+        },
+        {
+          "value": "3",
+          "label": "Three"
+        },
+        {
+          "value": "4",
+          "label": "Four"
+        }
+      ],
+      "default": "4"
+    },
+    {
+      "type": "select",
+      "id": "number_of_slides_tablet",
+      "label": "Number of slides tablet",
+      "options": [
+        {
+          "value": "1",
+          "label": "One"
+        },
+        {
+          "value": "2",
+          "label": "Two"
+        },
+        {
+          "value": "3",
+          "label": "Three"
+        },
+        {
+          "value": "4",
+          "label": "Four"
+        }
+      ],
+      "default": "2"
+    },
+    {
+      "type": "select",
+      "id": "number_of_slides_mobile",
+      "label": "Number of slides mobile",
+      "options": [
+        {
+          "value": "1",
+          "label": "One"
+        },
+        {
+          "value": "2",
+          "label": "Two"
+        }
+      ],
+      "default": "1"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Background image",
+      "info": "Size Recommended 1920x850"
+    },
+    {
+      "type": "range",
+      "id": "bg_brightness",
+      "min": 0,
+      "max": 9,
+      "step": 1,
+      "label": "Background fogging",
+      "default": 0
+    },
+    {
+      "type": "color",
+      "id": "content_color",
+      "label": "Content color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom_content",
+      "min": 20,
+      "max": 150,
+      "step": 5,
+      "label": "Margin bottom content",
+      "default": 40
+    },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "Title",
+      "default": "<h5>Words Of Our Clients</h5>"
+    },
+    {
+      "type": "richtext",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "<h2>What people say</h2>"
+    },
+    {
+      "type": "range",
+      "id": "foto_size",
+      "min": 60,
+      "max": 300,
+      "step": 5,
+      "unit": "px",
+      "label": "Foto size",
+      "default": 120
+    },
+    {
+      "type": "color",
+      "id": "review_bg_color",
+      "label": "Review background color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "client_name_color",
+      "label": "Client name color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "review_text_color",
+      "label": "Review text color",
+      "default": "#9e9e9e"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "client",
+      "name": "Client",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "client_foto",
+          "label": "Client foto",
+          "info": "Size Recommended 300x300"
+        },
+        {
+          "type": "text",
+          "id": "client_name",
+          "label": "Client name",
+          "default": "John Doe"
+        },
+        {
+          "type": "textarea",
+          "id": "review",
+          "label": "Review"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Review slider"
+    }
+  ]
+}
+{% endschema %}
