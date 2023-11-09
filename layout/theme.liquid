@@ -86,6 +86,9 @@
     <s-header>
       {% sections 'header-group' %}
     </s-header>
+    {% if template != 'search' %}
+      {%  section 'popup-search' %}
+    {% endif %}
     {% if template != 'cart' %}
       {% section 'cart-drawer' %}
     {% endif %}

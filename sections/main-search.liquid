@@ -1,0 +1,67 @@
+{{ 'section-search.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'section-search.js' | asset_url }}" defer></script>
+
+<style>
+   #shopify-section-{{ section.id }} .search-main__results_col{
+     flex-basis: {{ section.settings.column_count }}%;
+   }
+
+</style>
+
+<search-main class="search-main">
+  <div class="container">
+    <div class="search-main__form">
+      <form action="{{ routes.search_url }}">
+        <input
+          type="text"
+          placeholder="Search"
+          name="q"
+          value="{{ search.terms | escape }}"
+        >
+        <input type="submit" value="Search">
+      </form>
+    </div>
+
+    <div class="search-main__results">
+      {% for item in search.results %}
+        <div class="search-main__results_col">
+          {% render 'product-card', product: item %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</search-main>
+
+{% schema %}
+{
+  "name": "Main search",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section settings"
+    },
+    {
+      "type": "select",
+      "id": "column_count",
+      "label": "Column count",
+      "options": [
+        {
+          "value": "25",
+          "label": "4"
+        },
+        {
+          "value": "33",
+          "label": "3"
+        },
+        {
+          "value": "50",
+          "label": "2"
+        }
+      ],
+      "default": "33"
+    }
+  ]
+}
+{% endschema %}

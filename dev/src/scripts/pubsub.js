@@ -1,7 +1,8 @@
 module.exports = {
 	EVENTS: {
 		cartUpdated: 'cart-updated',
-		openCartDrawer: 'open-drawer'
+		openCartDrawer: 'open-drawer',
+		openSearch: 'open-search',
 	},
 	subscribers: {},
 	subscribe: function (eventName, callback) {

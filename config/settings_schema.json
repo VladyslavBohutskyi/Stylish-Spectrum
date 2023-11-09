@@ -19,6 +19,22 @@
     ]
   },
   {
+    "name": "Global",
+    "settings": [
+      {
+        "type": "range",
+        "id": "container_width",
+        "label": "Container width",
+        "min": 1200,
+        "max": 1900,
+        "step": 10,
+        "unit": "px",
+        "default": 1300,
+        "info": "Global container width" 
+      }
+    ]
+  },
+  {
     "name": "Colors",
     "settings": [
       {
