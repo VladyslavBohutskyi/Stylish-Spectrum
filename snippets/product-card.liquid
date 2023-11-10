@@ -1,43 +1,49 @@
 {{ 'product-card.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'product-card.js' | asset_url }}" defer></script>
 
-<script>
-  console.log({{ product |  json }});
-</script>
 
 <product-card class="product-card">
   <div class="product-card__wrapper">
-      <div class="product-card__img">
-        <img src="{{ product.selected_or_first_available_variant.featured_image |  img_url: 'master' }}" alt="{{ product.selected_or_first_available_variant.featured_image.alt }}">
-      </div>
-      <div class="product-card__content">
-        <div>
-          <a href="{{ product.url }}" class="product-card__content_title">{{ product.title }}</a>
-          <span class="product-card__content_price">{{ product.selected_or_first_available_variant.price | money }}</span>
-        </div>
-        <div>
-          <button class="product-card__content_add">{% render 'icon-cart' %}</button>
-        </div>
-      </div>
-      <a href="{{ product.url }}" class="product-card__content_view btn-underline">View product</a>
+    <div class="product-card__img">
+      <img
+        src="
+          {%  if product.selected_or_first_available_variant.featured_image %}
+             {{ product.selected_or_first_available_variant.featured_image |  img_url: 'master' }}
+             {% else %}
+             {{ product.featured_image }}
+          {% endif %}
+        "
+        alt="{{ product.selected_or_first_available_variant.featured_image.alt }}"
+      >
+    </div>
 
-      {% form 'product', product %}
-        <input type="number" name="quantity" min="1" value="1" id="product-quantity">
-        <select name="id" id="variant-select">
-          {% for variant in product.variants %}
-            <option
-              value="{{ variant.id }}"
-              {% if variant == product.selected_or_first_available_variant %}
-                selected="selected"
-              {% endif %}
-            >
-              {{ variant.title }} - {{ variant.price | money }}
-            </option>
-          {% endfor %}
-        </select>
+    <div class="product-card__content">
+      <div>
+        <a href="{{ product.url }}" class="product-card__content_title">{{ product.title }}</a>
+        <span class="product-card__content_price">{{ product.selected_or_first_available_variant.price | money }}</span>
+      </div>
+      <div>
+        <button class="product-card__content_add">{% render 'icon-cart' %}</button>
+      </div>
+    </div>
+    <a href="{{ product.url }}" class="product-card__content_view btn-underline">View product</a>
 
-        <input type="submit" value="Add to cart">
-      {% endform %}
+    {% form 'product', product %}
+      <input type="number" name="quantity" min="1" value="1" id="product-quantity">
+      <select name="id" id="variant-select">
+        {% for variant in product.variants %}
+          <option
+            value="{{ variant.id }}"
+            {% if variant == product.selected_or_first_available_variant %}
+              selected="selected"
+            {% endif %}
+          >
+            {{ variant.title }} - {{ variant.price | money }}
+          </option>
+        {% endfor %}
+      </select>
+
+      <input type="submit" value="Add to cart">
+    {% endform %}
   </div>
-  
 </product-card>

@@ -152,6 +152,7 @@ body, p{font-size:var(--font-size-body);}
 	text-align: center;
 	padding: 0px;
 	color: var(--color-text);
+	cursor: pointer;
 	&:before {
 		content: "";
 		position: absolute;
@@ -175,6 +176,7 @@ body, p{font-size:var(--font-size-body);}
 	color: var(--color-text);
 	border: 1px solid var(--color-text);
 	transition: all 0.3s ease-in-out;
+	cursor: pointer;
 	&:hover{
 		transition: all 0.3s ease-in-out;
 		background-color: var(--color-text);

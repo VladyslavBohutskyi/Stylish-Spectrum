@@ -1,0 +1,23 @@
+.best-sellers{
+  &__wrapper{
+
+  }
+  &__title{
+
+  }
+  &__subtitle{
+    
+  }
+  &__products{
+    display: flex;
+  }
+  &__product{
+    flex: 1;
+    padding: 10px;
+  } 
+  &__btn{
+    display: block;
+    margin-left: auto;
+    margin-top: 20px;
+  } 
+}

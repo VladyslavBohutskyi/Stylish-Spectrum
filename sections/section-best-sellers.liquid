@@ -9,6 +9,18 @@
       padding-top: {{ section.settings.padding_top_desktop }}px;
       padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
   }
+  #shopify-section-{{ section.id }} .best-sellers__wrapper {
+      text-align: {{ section.settings.text_align }};
+  }
+
+  #shopify-section-{{ section.id }} .best-sellers__title * {
+      color: {{ section.settings.title_color }};
+      font-size: {{ section.settings.title_font_size_desktop }}px;
+  }
+
+  #shopify-section-{{ section.id }} .best-sellers__subtitle * {
+      color: {{ section.settings.subtitle_color }};
+  }
   @media (max-width: 600px) {
       #shopify-section-{{ section.id }} {
           margin-top: {{ section.settings.margin_top_mobile }}px;
@@ -16,177 +28,224 @@
           padding-top: {{ section.settings.padding_top_mobile }}px;
           padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
       }
-      #shopify-section-{{ section.id }} .s-title-with-text__wrapper {
+      #shopify-section-{{ section.id }} .best-sellers__wrapper {
           text-align: {{ section.settings.text_align_mobile }};
       }
 
-      #shopify-section-{{ section.id }} .s-title-with-text__title * {
+      #shopify-section-{{ section.id }} .best-sellers__title * {
           font-size: {{ section.settings.title_font_size_mobile }}px;
       }
   }
-
 </style>
 
-<best-sellers>
-  <h1>best-sellers</h1>
+<best-sellers class="best-sellers">
+  <div class="container">
+    {% if section.settings.title.size > 0 or section.settings.subtitle.size > 0 %}
+      <div class="best-sellers__wrapper">
+        {% if section.settings.title.size > 0 %}
+          <div class="best-sellers__title">
+            <h3>{{ section.settings.title }}</h3>
+          </div>
+        {% endif %}
+        {% if section.settings.subtitle.size > 0 %}
+          <div class="best-sellers__subtitle">
+            {{ section.settings.subtitle }}
+          </div>
+        {% endif %}
+      </div>
+    {% endif %}
+    {% if section.settings.collection.size > 0 %}
+      <div class="best-sellers__products">
+        {% for product in section.settings.collection.products limit: section.settings.numbers_of_product %}
+          <div class="best-sellers__product">
+            {% render 'product-card', product: product %}
+          </div>
+        {% endfor %}
+      </div>
+      <button class="btn best-sellers__btn">Load More</button>
+    {% endif %}
+  </div>
 </best-sellers>
 
-
 {% schema %}
-  {
-    "name": "Best sellers",
-    "tag": "section",
-    "settings": [
-      {
-        "type": "header",
-        "content": "Section settings"
-      },
-      {
-        "type": "color",
-        "id": "bg_color",
-        "label": "Background color",
-        "default": "#FFFFFF"
-      },
-      {
-        "type": "range",
-        "id": "margin_top_desktop",
-        "min": 0,
-        "max": 150,
-        "step": 5,
-        "unit": "px",
-        "label": "Margin top desktop",
-        "default": 0
-      },
-      {
-        "type": "range",
-        "id": "margin_top_mobile",
-        "min": 0,
-        "max": 150,
-        "step": 5,
-        "unit": "px",
-        "label": "Margin top mobile",
-        "default": 0
-      },
-      {
-        "type": "range",
-        "id": "margin_bottom_desktop",
-        "min": 0,
-        "max": 150,
-        "step": 5,
-        "unit": "px",
-        "label": "Margin bottom desktop",
-        "default": 0
-      },
-      {
-        "type": "range",
-        "id": "margin_bottom_mobile",
-        "min": 0,
-        "max": 150,
-        "step": 5,
-        "unit": "px",
-        "label": "Margin bottom mobile",
-        "default": 0
-      },
-      {
-        "type": "range",
-        "id": "padding_top_desktop",
-        "min": 0,
-        "max": 150,
-        "step": 5,
-        "unit": "px",
-        "label": "Padding top desktop",
-        "default": 50
-      },
-      {
-        "type": "range",
-        "id": "padding_top_mobile",
-        "min": 0,
-        "max": 150,
-        "step": 5,
-        "unit": "px",
-        "label": "Padding top mobile",
-        "default": 35
-      },
-      {
-        "type": "range",
-        "id": "padding_bottom_desktop",
-        "min": 0,
-        "max": 150,
-        "step": 5,
-        "unit": "px",
-        "label": "Padding bottom desktop ",
-        "default": 50
-      },
-      {
-        "type": "range",
-        "id": "padding_bottom_mobile",
-        "min": 0,
-        "max": 150,
-        "step": 5,
-        "unit": "px",
-        "label": "Padding bottom mobile",
-        "default": 35
-      }, 
-      {
-        "type": "text_alignment",
-        "id": "text_align",
-        "label": "Text alignment",
-        "default": "center"
-      },
-      {
-        "type": "text_alignment",
-        "id": "text_align_mobile",
-        "label": "Text alignment mobile",
-        "default": "center"
-      },
-      {
-        "type": "text",
-        "id": "title",
-        "label": "Title"
-      },
-      {
-        "type": "range",
-        "id": "title_font_size_desktop",
-        "min": 10,
-        "max": 36,
-        "step": 1,
-        "unit": "px",
-        "label": "Title font size desktop",
-        "default": 26
-      },
-      {
-        "type": "range",
-        "id": "title_font_size_mobile",
-        "min": 10,
-        "max": 36,
-        "step": 1,
-        "unit": "px",
-        "label": "Title font size mobile",
-        "default": 22
-      },
-      {
-        "type": "color",
-        "id": "title_color",
-        "label": "Title color",
-        "default": "#000000"
-      },
-      {
-        "type": "richtext",
-        "id": "subtitle",
-        "label": "Subtitle"
-      },
-      {
-        "type": "color",
-        "id": "subtitle_color",
-        "label": "Subtitle color",
-        "default": "#000000"
-      } 
-    ],
-    "presets": [
-      {
-        "name": "Best sellers"
-      }
-    ]
-  }
-  {% endschema %}
-  
+{
+  "name": "Best sellers",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section settings"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "margin_top_desktop",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Margin top desktop",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_top_mobile",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Margin top mobile",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom_desktop",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Margin bottom desktop",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom_mobile",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Margin bottom mobile",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding top desktop",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding top mobile",
+      "default": 35
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding bottom desktop ",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "unit": "px",
+      "label": "Padding bottom mobile",
+      "default": 35
+    },
+    {
+      "type": "text_alignment",
+      "id": "text_align",
+      "label": "Text alignment",
+      "default": "center"
+    },
+    {
+      "type": "text_alignment",
+      "id": "text_align_mobile",
+      "label": "Text alignment mobile",
+      "default": "center"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_desktop",
+      "min": 10,
+      "max": 36,
+      "step": 1,
+      "unit": "px",
+      "label": "Title font size desktop",
+      "default": 26
+    },
+    {
+      "type": "range",
+      "id": "title_font_size_mobile",
+      "min": 10,
+      "max": 36,
+      "step": 1,
+      "unit": "px",
+      "label": "Title font size mobile",
+      "default": 22
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#000000"
+    },
+    {
+      "type": "richtext",
+      "id": "subtitle",
+      "label": "Subtitle"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle color",
+      "default": "#000000"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    },
+    {
+      "type": "select",
+      "id": "numbers_of_product",
+      "label": "Numbers of product",
+      "options": [
+        {
+          "value": "2",
+          "label": "2"
+        },
+        {
+          "value": "3",
+          "label": "3"
+        },
+        {
+          "value": "4",
+          "label": "4"
+        }
+      ],
+      "default": "3"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Best sellers"
+    }
+  ]
+}
+{% endschema %}

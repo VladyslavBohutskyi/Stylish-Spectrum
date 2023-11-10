@@ -1,2 +1,13 @@
-
-/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiIiwic291cmNlcyI6WyJzZWN0aW9uLWJlc3Qtc2VsbGVycy5zY3NzIl0sInNvdXJjZXNDb250ZW50IjpbIiJdLCJmaWxlIjoic2VjdGlvbi1iZXN0LXNlbGxlcnMuY3NzIn0= */
+.best-sellers__products {
+  display: flex;
+}
+.best-sellers__product {
+  flex: 1;
+  padding: 10px;
+}
+.best-sellers__btn {
+  display: block;
+  margin-left: auto;
+  margin-top: 20px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNlY3Rpb24tYmVzdC1zZWxsZXJzLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBVUU7RUFDRTs7QUFFRjtFQUNFO0VBQ0E7O0FBRUY7RUFDRTtFQUNBO0VBQ0EiLCJmaWxlIjoic2VjdGlvbi1iZXN0LXNlbGxlcnMuY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmJlc3Qtc2VsbGVyc3tcclxuICAmX193cmFwcGVye1xyXG5cclxuICB9XHJcbiAgJl9fdGl0bGV7XHJcblxyXG4gIH1cclxuICAmX19zdWJ0aXRsZXtcclxuICAgIFxyXG4gIH1cclxuICAmX19wcm9kdWN0c3tcclxuICAgIGRpc3BsYXk6IGZsZXg7XHJcbiAgfVxyXG4gICZfX3Byb2R1Y3R7XHJcbiAgICBmbGV4OiAxO1xyXG4gICAgcGFkZGluZzogMTBweDtcclxuICB9IFxyXG4gICZfX2J0bntcclxuICAgIGRpc3BsYXk6IGJsb2NrO1xyXG4gICAgbWFyZ2luLWxlZnQ6IGF1dG87XHJcbiAgICBtYXJnaW4tdG9wOiAyMHB4O1xyXG4gIH0gXHJcbn0iXX0= */

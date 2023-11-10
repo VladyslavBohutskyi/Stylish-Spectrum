@@ -5,7 +5,11 @@ if (!customElements.get('best-sellers')) {
     }
 
     connectedCallback() {
-      console.log('best-sellers');
+      this.querySelector('.best-sellers__btn').addEventListener('click', () => this.loadMore())
+    }
+
+    loadMore(){
+      console.log(this);
     }
 
   })

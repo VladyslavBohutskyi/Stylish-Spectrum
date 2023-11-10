@@ -83,6 +83,29 @@
         "text_align_mobile": "center"
       }
     },
+    "301d693c-a80c-4fae-8a24-7f34d2b50100": {
+      "type": "section-best-sellers",
+      "settings": {
+        "bg_color": "#e1e0e0",
+        "margin_top_desktop": 0,
+        "margin_top_mobile": 0,
+        "margin_bottom_desktop": 0,
+        "margin_bottom_mobile": 0,
+        "padding_top_desktop": 50,
+        "padding_top_mobile": 35,
+        "padding_bottom_desktop": 50,
+        "padding_bottom_mobile": 35,
+        "text_align": "left",
+        "text_align_mobile": "center",
+        "title": "BEST SELLERS",
+        "title_font_size_desktop": 26,
+        "title_font_size_mobile": 22,
+        "title_color": "#000000",
+        "subtitle": "<p>Discover our \"Best sellers\" - a handpicked assortment of our top-performing products that have consistently received rave reviews from our satisfied customers. These are the products that everyone is talking about and for good reason.<\/p>",
+        "subtitle_color": "#000000",
+        "collection": "best-sellers"
+      }
+    },
     "aa030c17-e9c6-4559-9ef0-800d8f9705ee": {
       "type": "featured-products",
       "blocks": {
@@ -156,7 +179,7 @@
           "settings": {
             "client_foto": "shopify:\/\/shop_images\/vladyslav_bohutskyi.jpg",
             "client_name": "Vlad Bohutskyi",
-            "review": "By employing a proactive social media team that will retweet customer content, as you can see in the image above, they are able to increase customer satisfaction not just for the one customer retweeted, but by all customers (and potential customers) who see the post."
+            "review": "I absolutely love the clothes I purchased from this website! The quality is amazing and the prices are unbeatable. I will definitely be a returning customer."
           }
         },
         "8a06fe2d-d773-4672-a0e6-cafe89292688": {
@@ -164,7 +187,7 @@
           "settings": {
             "client_foto": "shopify:\/\/shop_images\/olga_smith.jpg",
             "client_name": "Shivon Smith",
-            "review": "By employing a proactive social media team that will retweet customer content, as you can see in the image above, they are able to increase customer satisfaction not just for the one customer retweeted, but by all customers (and potential customers) who see the post."
+            "review": "The customer service was fantastic and the shipping was super fast. I couldn't be happier with my purchase and will be recommending this site to all of my friends."
           }
         },
         "c5d419af-cc54-4581-8c17-5e538da7b082": {
@@ -172,7 +195,7 @@
           "settings": {
             "client_foto": "shopify:\/\/shop_images\/stella_smiith.jpg",
             "client_name": "Stella Watson",
-            "review": "By employing a proactive social media team that will retweet customer content, as you can see in the image above, they are able to increase customer satisfaction not just for the one customer retweeted, but by all customers (and potential customers) who see the post."
+            "review": "I was a bit hesitant to order clothes online, but I am so glad I did. The items I received were exactly as described and the fit was perfect. I will be shopping here again for sure."
           }
         },
         "80ae18da-f250-4e85-bad7-92934dd79c54": {
@@ -180,7 +203,7 @@
           "settings": {
             "client_foto": "shopify:\/\/shop_images\/vladyslav_bohutskyi.jpg",
             "client_name": "Vlad Bohutskyi",
-            "review": "By employing a proactive social media team that will retweet customer content, as you can see in the image above, they are able to increase customer satisfaction not just for the one customer retweeted, but by all customers (and potential customers) who see the post."
+            "review": "I have never been disappointed with my purchases from this site. The selection is great and the clothes are always on trend. I have received so many compliments on the pieces I've bought here."
           }
         },
         "7d89bfa8-04a4-4e5a-b2f7-8c4c29d180e0": {
@@ -188,7 +211,7 @@
           "settings": {
             "client_foto": "shopify:\/\/shop_images\/tomas_smith.jpg",
             "client_name": "Andy Wood",
-            "review": "By employing a proactive social media team that will retweet customer content, as you can see in the image above, they are able to increase customer satisfaction not just for the one customer retweeted, but by all customers (and potential customers) who see the post."
+            "review": "I can't say enough good things about this website. The clothes are stylish, affordable, and the shipping is always quick. I have become a loyal customer and will continue to shop here for all of my clothing needs."
           }
         },
         "9b356eac-1bc2-4662-b9d7-41a1efceadf4": {
@@ -196,7 +219,15 @@
           "settings": {
             "client_foto": "shopify:\/\/shop_images\/stella_smiith.jpg",
             "client_name": "Stella Watson",
-            "review": "By employing a proactive social media team that will retweet customer content, as you can see in the image above, they are able to increase customer satisfaction not just for the one customer retweeted, but by all customers (and potential customers) who see the post."
+            "review": "I absolutely love the 'Top Selling Products' of this store! They always meet my expectations and never disappoint. These are truly the best products you can find here."
+          }
+        },
+        "4760e671-8949-4ca6-bb8f-c685469798b1": {
+          "type": "client",
+          "settings": {
+            "client_foto": "shopify:\/\/shop_images\/pexels-andrea-piacquadio-3772506-min.jpg",
+            "client_name": "Sarah Parker",
+            "review": "I can't find enough words to describe how satisfied I am with the 'Top Selling Products' of this store. They truly deserve their popularity, as the quality of their products is simply unmatched."
           }
         }
       },
@@ -206,7 +237,8 @@
         "c5d419af-cc54-4581-8c17-5e538da7b082",
         "80ae18da-f250-4e85-bad7-92934dd79c54",
         "7d89bfa8-04a4-4e5a-b2f7-8c4c29d180e0",
-        "9b356eac-1bc2-4662-b9d7-41a1efceadf4"
+        "9b356eac-1bc2-4662-b9d7-41a1efceadf4",
+        "4760e671-8949-4ca6-bb8f-c685469798b1"
       ],
       "settings": {
         "margin_top_desktop": 0,
@@ -239,6 +271,7 @@
   },
   "order": [
     "78435f15-1447-4054-bc56-713bd41fe56e",
+    "301d693c-a80c-4fae-8a24-7f34d2b50100",
     "aa030c17-e9c6-4559-9ef0-800d8f9705ee",
     "09152723-65f8-4a16-931a-5876b9b21836"
   ]
