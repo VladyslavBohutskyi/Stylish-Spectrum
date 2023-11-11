@@ -183,3 +183,7 @@ body, p{font-size:var(--font-size-body);}
 		color: var(--color-background) ;
 	}
 }
+.row{
+	display: flex;
+	flex-wrap: wrap;
+}

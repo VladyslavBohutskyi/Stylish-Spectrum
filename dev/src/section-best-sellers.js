@@ -9,8 +9,14 @@ if (!customElements.get('best-sellers')) {
     }
 
     loadMore(){
-      console.log(this);
+      fetch(window.theme.shopUrl + `/collections/best-sellers?page=1`)
+        .then((res) => res.text())
+        .then((data) => {
+          const html = new DOMParser().parseFromString(data, "text/html");
+          html.querySelectorAll('.main-collection__product').forEach(e => e.classList.value = 'best-sellers__product')
+          this.querySelector('.best-sellers__products').innerHTML = html.querySelector('.main-collection__products').innerHTML 
+          console.log(html)
+        })
     }
-
   })
 }

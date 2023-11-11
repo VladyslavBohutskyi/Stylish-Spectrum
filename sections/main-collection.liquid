@@ -1,0 +1,84 @@
+{{ 'main-collection.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'main-collection.js' | asset_url }}" defer></script>
+
+<script>
+  console.log({{ collection.products | json}});
+</script>
+
+<main-collection class="main-collection">
+  <div class="container">
+    <div class="main-collection__wrapper">
+      <div class="main-collection__title">
+        <h3>{{ collection.title }}</h3>
+      </div>
+    </div>
+
+    {% paginate collection.products by section.settings.count_products %}
+      <div class="main-collection__products row">
+        {% for product in collection.products %}
+          <div class="main-collection__product">
+            {% render 'product-card', product: product %}
+          </div>
+        {% endfor %}
+      </div>
+      {{ paginate | default_pagination }}
+    {% endpaginate %}
+  </div>
+</main-collection>
+
+{% schema %}
+{
+  "name": "Collection",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section settings"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "text_alignment",
+      "id": "text_align",
+      "label": "Text alignment",
+      "default": "center"
+    },
+    {
+      "type": "text_alignment",
+      "id": "text_align_mobile",
+      "label": "Text alignment mobile",
+      "default": "center"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "count_products",
+      "label": "Count products on page",
+      "min": 2,
+      "max": 30,
+      "step": 1,
+      "default": 2
+    }
+  ]
+}
+{% endschema %}
