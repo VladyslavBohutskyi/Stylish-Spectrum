@@ -427,6 +427,25 @@
     ]
   },
   {
+    "name": "Product card",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Settings product card"
+      },
+      {
+        "type": "range",
+        "id": "product_image_height",
+        "min": 100,
+        "max": 800,
+        "step": 10,
+        "unit": "px",
+        "label": "Product image height",
+        "default": 290
+      }
+    ]
+  },
+  {
     "name": "Social media",
     "settings": [
       {

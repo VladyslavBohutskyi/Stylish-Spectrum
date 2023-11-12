@@ -1,6 +1,11 @@
 {{ 'product-card.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'product-card.js' | asset_url }}" defer></script>
 
+<style>
+  .product-card__img{
+    height: {{ settings.product_image_height }}px;
+  }
+</style>
 
 <product-card class="product-card">
   <div class="product-card__wrapper">
@@ -18,15 +23,20 @@
     </div>
 
     <div class="product-card__content">
-      <div>
-        <a href="{{ product.url }}" class="product-card__content_title">{{ product.title }}</a>
-        <span class="product-card__content_price">{{ product.selected_or_first_available_variant.price | money }}</span>
-      </div>
-      <div>
+
+      <span class="product-card__content_type">{{ product.type }}</span>
+      <a href="{{ product.url }}" class="product-card__content_title">{{ product.title }}</a>
+      <span class="product-card__content_price">{{ product.selected_or_first_available_variant.price | money }}</span>
+      
+      <div class="product-card__content_footer">
         <button class="product-card__content_add">{% render 'icon-cart' %}</button>
+        <a href="{{ product.url }}" class="product-card__content_view btn-underline">View product</a>
       </div>
+
     </div>
-    <a href="{{ product.url }}" class="product-card__content_view btn-underline">View product</a>
+
+
+
 
     {% form 'product', product %}
       <input type="number" name="quantity" min="1" value="1" id="product-quantity">
@@ -42,8 +52,8 @@
           </option>
         {% endfor %}
       </select>
-
       <input type="submit" value="Add to cart">
     {% endform %}
+
   </div>
 </product-card>

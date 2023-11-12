@@ -1,11 +1,10 @@
 .product-card {
+  display: block;
   form{
     display: none;
   }
   &__wrapper {
-    width: 100%;
-    text-align: right;
-    margin-bottom: 15px;
+
   }
 
   &__img {
@@ -54,6 +53,13 @@
     }
 
     &_price {}
+
+    &_footer{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top: 1px solid darkgray;
+    }
 
     &_add {
       border: none;
