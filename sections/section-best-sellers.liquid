@@ -38,31 +38,43 @@
   }
 </style>
 
-<best-sellers class="best-sellers" data-collection = '{{ section.settings.collection.handle }}' data-count = '{{ section.settings.count_of_product }}'>
+<best-sellers
+  class="best-sellers"
+  data-collection="{{ section.settings.collection.handle }}"
+  data-count="{{ section.settings.count_of_product }}"
+>
   <div class="container">
-    {% if section.settings.title.size > 0 or section.settings.subtitle.size > 0 %}
-      <div class="best-sellers__wrapper">
-        {% if section.settings.title.size > 0 %}
-          <div class="best-sellers__title">
-            <h3>{{ section.settings.title }}</h3>
-          </div>
-        {% endif %}
-        {% if section.settings.subtitle.size > 0 %}
-          <div class="best-sellers__subtitle">
-            {{ section.settings.subtitle }}
-          </div>
-        {% endif %}
+    <div class="best-sellers__header">
+      {% if section.settings.title.size > 0 or section.settings.subtitle.size > 0 %}
+        <div class="best-sellers__wrapper">
+          {% if section.settings.title.size > 0 %}
+            <div class="best-sellers__title">
+              <h3>{{ section.settings.title }}</h3>
+            </div>
+          {% endif %}
+          {% if section.settings.subtitle.size > 0 %}
+            <div class="best-sellers__subtitle">
+              {{ section.settings.subtitle }}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      <div class="best-sellers__buttons">
+        <button class="btn best-sellers__btn">Load More</button>
+        <a href="{{ section.settings.collection.handle }}" class="btn">viev all</a>
       </div>
-    {% endif %}
+    </div>
+
     {% if section.settings.collection.size > 0 %}
       <div class="best-sellers__products">
-        {% for product in section.settings.collection.products limit: section.settings.count_of_product %}  
+        {% for product in section.settings.collection.products limit: section.settings.count_of_product %}
           <div class="best-sellers__product">
             {% render 'product-card', product: product %}
           </div>
         {% endfor %}
       </div>
-      <button class="btn best-sellers__btn">Load More</button>
+      
     {% endif %}
   </div>
 </best-sellers>

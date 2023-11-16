@@ -165,6 +165,7 @@ body, p{font-size:var(--font-size-body);}
 }
 
 .btn{
+	text-transform: capitalize;
 	text-decoration: none;
 	position: relative;
 	letter-spacing: 0.04em;

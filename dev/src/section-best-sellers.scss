@@ -1,23 +1,32 @@
-.best-sellers{
-  &__wrapper{
+.best-sellers {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
 
+  &__wrapper {
+    max-width: 60%;
   }
-  &__title{
 
-  }
-  &__subtitle{
-    
-  }
-  &__products{
+  &__title {}
+
+  &__subtitle {}
+
+  &__products {
     display: flex;
   }
-  &__product{
+
+  &__product {
     flex: 1;
-    padding: 10px;
-  } 
-  &__btn{
-    display: block;
-    margin-left: auto;
-    margin-top: 20px;
-  } 
+    margin-left: 15px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  &__buttons {
+    margin: auto;
+  }
+
 }
