@@ -1,55 +1,76 @@
 if (!customElements.get('best-sellers')) {
-  customElements.define('best-sellers', class BestSellers extends HTMLElement {
-    constructor() {
-      super();
-    }
-    nameCollection = this.dataset.collection
-    numberPage = 1
-    countLoadMore = 1
-    countProducts = this.dataset.count
-    collectionProducts = []
-    countCollectionProducts = null
+  customElements.define('best-sellers', class SBest extends HTMLElement {
 
+      constructor() {
+        super();
+      }
+       nameCollection = this.dataset.collection
+       countProducts = this.dataset.countProducts
+       numberPage = 1
+       countLoadMore = 1
+       countCollectionProducts = null
+       collectionProducts = []
+      connectedCallback() {
 
-    connectedCallback() {
-      this.querySelector('.best-sellers__btn').addEventListener('click', () => this.loadMore())
-      this.updateCollection()
-    }
+        this.updateCollection()
 
-    updateCollection() {
-      if (this.countCollectionProducts != false) {
+        this.querySelector('.best-sellers__btn').addEventListener('click', ()=> this.loadMore())
+      }
+
+      updateCollection(){
+        if(this.countCollectionProducts !== false){
         fetch(window.theme.shopUrl + `/collections/${this.nameCollection}?page=${this.numberPage}`)
           .then((res) => res.text())
           .then((data) => {
             const html = new DOMParser().parseFromString(data, "text/html");
-            html.querySelectorAll('.main-collection__product').forEach(el => el.classList.value = 'best-sellers__product')
-
+            html.querySelectorAll('.main-collection__product').forEach(el => el.classList.value = 'best-sellers__product' )
             const products = Array.from(html.querySelectorAll('.best-sellers__product'))
-
             this.countCollectionProducts = this.countCollectionProducts ?? products.length
 
-            if (this.countCollectionProducts > products.length) {this.countCollectionProducts = false}
+            if(this.countCollectionProducts > products.length)this.countCollectionProducts = false
 
             this.collectionProducts = [...this.collectionProducts, ...products]
             this.numberPage++
 
-            if (this.collectionProducts.length < (this.countProducts * this.countLoadMore + (+this.countProducts))) {
+            if((this.collectionProducts.length < ((this.countProducts * this.countLoadMore) + (+this.countProducts)))){
               this.updateCollection()
             }
+            this.querySelector('.best-sellers__btn').disabled = false;
+
           })
+        }
+      }
+
+      loadMore(){
+
+        if(this.collectionProducts.length > (this.countLoadMore * this.countProducts)){
+          const newProducts = document.createElement('div')
+          this.collectionProducts.forEach((product, index) => {
+            if(index >= this.countProducts * this.countLoadMore && index < (this.countProducts * this.countLoadMore) + (+this.countProducts)){
+              newProducts.appendChild(product);
+            }
+          })
+
+
+          if(newProducts.childElementCount < this.countProducts){
+            for (let i = this.countProducts; i > newProducts.childElementCount; i--){
+              newProducts.insertBefore(this.collectionProducts[this.collectionProducts.length-i], newProducts.firstChild);
+            }
+            this.querySelector('.best-sellers__btn').disabled = true;
+          }
+
+          this.querySelector('.best-sellers__products').innerHTML = newProducts.innerHTML
+          this.countLoadMore++
+
+          if( this.countLoadMore * this.countProducts > this.collectionProducts.length - this.countProducts ){
+            this.querySelector('.best-sellers__btn').disabled = true;
+            this.updateCollection()
+          }
+        }
+        else {
+          console.log('finish')
+        }
       }
     }
-
-    loadMore() {
-      this.collectionProducts.forEach((prod, index) => {
-        console.log(prod);
-        console.log(index);
-        if(index > this.countProducts * this.countLoadMore && index < (this.countProducts * this.countLoadMore + (+this.countProducts))){
-          this.querySelector('.best-sellers__products').appendChild(prod)
-        }
-      })
-
-      
-    }
-  })
+  )
 }
