@@ -5,7 +5,7 @@ if (!customElements.get('best-sellers')) {
         super();
       }
        nameCollection = this.dataset.collection
-       countProducts = this.dataset.countProducts
+       countProducts = this.dataset.count
        numberPage = 1
        countLoadMore = 1
        countCollectionProducts = null
@@ -42,7 +42,9 @@ if (!customElements.get('best-sellers')) {
       }
 
       loadMore(){
-
+        console.log(this.collectionProducts.length);
+        console.log(this.countLoadMore);
+        console.log(this.countProducts);
         if(this.collectionProducts.length > (this.countLoadMore * this.countProducts)){
           const newProducts = document.createElement('div')
           this.collectionProducts.forEach((product, index) => {
