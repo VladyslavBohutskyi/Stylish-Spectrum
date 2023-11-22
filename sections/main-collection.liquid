@@ -1,10 +1,6 @@
 {{ 'main-collection.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'main-collection.js' | asset_url }}" defer></script>
 
-<script>
-  console.log({{ collection.products | json}});
-</script>
-
 <main-collection class="main-collection">
   <div class="container">
     <div class="main-collection__wrapper">
@@ -12,6 +8,37 @@
         <h3>{{ collection.title }}</h3>
       </div>
     </div>
+
+    <div>
+      <h3>sort filter test</h3>
+      {% if collection.all_tags %}
+        <ul class="tag-filters">
+          {% for tag in collection.all_tags %}
+            {% if current_tags contains tag %}
+              <li class="tag-filters__item active">{{ tag | link_to_remove_tag: tag }}</li>
+            {% else %}
+              <li class="tag-filters__item">{{ tag | link_to_add_tag: tag }}</li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </div>
+
+
+    <select id="sort-by">
+      {% assign sort_by = collection.sort_by | default: collection.default_sort_by %}
+
+      {% for option in collection.sort_options %}
+        <option
+          value="{{ option.value }}"
+          {% if option.value == sort_by %}
+            selected="selected"
+          {% endif %}
+        >
+          {{ option.name }}
+        </option>
+      {% endfor %}
+    </select>
 
     {% paginate collection.products by section.settings.count_products %}
       <div class="main-collection__products row">

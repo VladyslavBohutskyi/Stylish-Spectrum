@@ -11,9 +11,6 @@
 {{ 'main-product.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'main-product.js' | asset_url }}" defer></script>
 
-<script>
-  console.log({{ product |  json }});
-</script>
 
 <main-product data-variants='{{ product.variants |  json }}'>
   {% comment %} after auto formating don`t forget change "" on '' {% endcomment %}

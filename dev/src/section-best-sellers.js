@@ -69,9 +69,6 @@ if (!customElements.get('best-sellers')) {
             this.updateCollection()
           }
         }
-        else {
-          console.log('finish')
-        }
       }
     }
   )

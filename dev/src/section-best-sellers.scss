@@ -25,9 +25,20 @@
     }
   }
 
-  &__buttons {
-    margin: auto 0 auto auto;
-    
+  &__buttons{
+    margin-left: auto;
+    margin-top: 35px;
+    cursor: pointer;
+    .btn{
+      &:disabled{
+        color: darkgrey;
+        border-color: darkgrey;
+        &:hover{
+            color: darkgrey;
+            border-color: darkgrey;
+            background-color: white;
+          }
+        }
+    }
   }
-
 }
