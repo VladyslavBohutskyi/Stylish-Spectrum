@@ -64,33 +64,33 @@
         cursor: pointer;
         transition: color 0.2s ease-in-out;
         font-weight: 500;
-        &:before {
-          content: "";
-          position: absolute;
-          left: 0;
-          height: 1px;
-          width: 0;
-          bottom: 5px;
-          transition: width 0.2s ease;
-        }
+        // &:before {
+        //   content: "";
+        //   position: absolute;
+        //   left: 0;
+        //   height: 1px;
+        //   width: 0;
+        //   bottom: 5px;
+        //   transition: width 0.2s ease;
+        // }
 
         &:hover {
-          &:before {
-            width: 100%;
-            transition: width 0.2s ease;
-          }
+          // &:before {
+          //   width: 100%;
+          //   transition: width 0.2s ease;
+          // }
         }
       }
       &--active {
         & > a {
-          &:before {
-            content: "";
-            position: absolute;
-            left: 0;
-            height: 1px;
-            width: 100%;
-            bottom: 5px;
-          }
+          // &:before {
+          //   content: "";
+          //   position: absolute;
+          //   left: 0;
+          //   height: 1px;
+          //   width: 100%;
+          //   bottom: 5px;
+          // }
         }
       }
       ul{
@@ -101,14 +101,14 @@
           margin-top: 10px;
 
           &.active > a{
-            &:before {
-              content: "";
-              position: absolute;
-              left: 0;
-              height: 1px;
-              width: 100%;
-              bottom: 5px;
-            }
+            // &:before {
+            //   content: "";
+            //   position: absolute;
+            //   left: 0;
+            //   height: 1px;
+            //   width: 100%;
+            //   bottom: 5px;
+            // }
           }
           a{
             font-weight: 400;

@@ -1,13 +1,12 @@
-.main-collection__products {
-  display: flex;
+.main-collection__wrapper {
+  margin-top: 50px;
+  margin-bottom: 10px;
+  text-align: center;
 }
 .main-collection__product {
   flex: 1;
-  padding: 5px;
+  padding: 7px;
+  flex-basis: 33.3%;
+  margin-bottom: 20px;
 }
-.main-collection__btn {
-  display: block;
-  margin-left: auto;
-  margin-top: 20px;
-}
-/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1haW4tY29sbGVjdGlvbi5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQVVFO0VBQ0U7O0FBRUY7RUFDRTtFQUNBOztBQUVGO0VBQ0U7RUFDQTtFQUNBIiwiZmlsZSI6Im1haW4tY29sbGVjdGlvbi5jc3MiLCJzb3VyY2VzQ29udGVudCI6WyIubWFpbi1jb2xsZWN0aW9ue1xyXG4gICZfX3dyYXBwZXJ7XHJcblxyXG4gIH1cclxuICAmX190aXRsZXtcclxuXHJcbiAgfVxyXG4gICZfX3N1YnRpdGxle1xyXG4gICAgXHJcbiAgfVxyXG4gICZfX3Byb2R1Y3Rze1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICB9XHJcbiAgJl9fcHJvZHVjdHtcclxuICAgIGZsZXg6IDE7XHJcbiAgICBwYWRkaW5nOiA1cHg7XHJcbiAgfSBcclxuICAmX19idG57XHJcbiAgICBkaXNwbGF5OiBibG9jaztcclxuICAgIG1hcmdpbi1sZWZ0OiBhdXRvO1xyXG4gICAgbWFyZ2luLXRvcDogMjBweDtcclxuICB9IFxyXG59Il19 */
+/*# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1haW4tY29sbGVjdGlvbi5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUNFO0VBQ0U7RUFDQTtFQUNBOztBQUVGO0VBQ0U7RUFDQTtFQUNBO0VBQ0EiLCJmaWxlIjoibWFpbi1jb2xsZWN0aW9uLmNzcyIsInNvdXJjZXNDb250ZW50IjpbIi5tYWluLWNvbGxlY3Rpb257XHJcbiAgJl9fd3JhcHBlcntcclxuICAgIG1hcmdpbi10b3A6IDUwcHg7XHJcbiAgICBtYXJnaW4tYm90dG9tOiAxMHB4O1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gIH1cclxuICAmX19wcm9kdWN0e1xyXG4gICAgZmxleDogMTtcclxuICAgIHBhZGRpbmc6IDdweDtcclxuICAgIGZsZXgtYmFzaXM6IDMzLjMlO1xyXG4gICAgbWFyZ2luLWJvdHRvbTogMjBweDtcclxuICB9XHJcbn0iXX0= */

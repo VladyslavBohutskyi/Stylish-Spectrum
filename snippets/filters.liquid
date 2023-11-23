@@ -1,0 +1,74 @@
+{{ 'filters.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'filters.js' | asset_url }}" defer></script>
+
+{%- liquid
+  assign sort_by = results.sort_by | default: results.default_sort_by
+  assign results_url = results.url
+-%}
+
+<main-filters class="main-filters">
+  <div class="row">
+    <div class="main-filters__filters">
+      {% for filter in results.filters %}
+        <div class="main-filters__filters__item">
+          <p class="main-filters__filters__item__title">
+            {{ filter.label }}
+            {% render 'icon-angle' %}
+          </p>
+          <ul class="main-filters__filters__item__list">
+            {% for value in filter.values %}
+              <li class="main-filters__filters__item__list__li">
+                <a
+                  href="https://stylish-spectrum.myshopify.com{% if value.active == true %}{{ value.url_to_remove }}{% else %}{{ value.url_to_add }}{% endif %}"
+                  class="main-filters__filters__item__list__add_filter"
+                  data-filter-value="{% if value.active == true%}{{ value.url_to_remove }}{% else %}{{ value.url_to_add }}{% endif %}"
+                >
+                  {{ value.value }}
+                  {% if value.active %}
+                    {% render 'icon-checked' %}
+                  {% else %}
+                    {% render 'icon-unchecked' %}
+                  {% endif %}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endfor %}
+    </div>
+    <div>
+      <div class="main-filters__sort">
+        <span>Sort by: </span>
+        <select id="sort-by">
+          {% assign sort_by = results.sort_by | default: results.default_sort_by %}
+          {% for option in results.sort_options %}
+            <option
+              value="{{ option.value }}"
+              {% if option.value == sort_by %}
+                selected="selected"
+              {% endif %}
+            >
+              {{ option.name }}
+            </option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="main-filters__checked">
+    {% for filter in results.filters %}
+      <div class="active-filters">
+        {% for value in filter.active_values %}
+          <a
+            href="https://stylish-spectrum.myshopify.com{{ value.url_to_remove }}"
+            class="main-filters__filters__item__list__add_filter"
+            data-filter-value="{% if value.active == true%}{{ value.url_to_remove }}{% else %}{{ value.url_to_add }}{% endif %}"
+          >
+            {{- value.value }}
+            {% render 'icon-close' -%}
+          </a>
+        {% endfor %}
+      </div>
+    {% endfor %}
+  </div>
+</main-filters>
