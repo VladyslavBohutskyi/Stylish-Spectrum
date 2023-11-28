@@ -2,12 +2,16 @@
 <script src="{{ 'product-card.js' | asset_url }}" defer></script>
 
 <style>
-  .product-card__image{
-      height: {{ settings.product_image_height }}px;
+  .card{
+      width: {{ settings.product_card_width }}px;
+  } 
+  .card__image__wrapper{
+      flex: 0 0 {{ settings.product_image_height }}px;
   }
 </style>
 
-<product-card class="product-card">
+{% comment %}
+  <product-card class="product-card">
   <div class="product-card__wrapper">
     <div class="product-card__image">
       <img
@@ -36,7 +40,37 @@
       </div>
     </div>
   </div>
+{% endcomment %}
 
+<product-card class="card product-card">
+  <div class="card__image__wrapper">
+    <a href="{{ product.url }}" class="card__image">
+      <img
+        src="
+          {% if product.selected_or_first_available_variant.featured_image.size > 0 %}
+            {{ product.selected_or_first_available_variant.featured_image | img_url: 'master' }}
+            {% else %}
+            {{ product.featured_image | img_url: 'master' }}
+          {% endif %}
+        "
+        alt="{{ product.title }}"
+      >
+    </a>
+  </div>
+  <div class="card__bottom">
+    <div class="card__bottom__type">
+      {{ product.type }}
+    </div>
+    <div class="card__bottom__price">
+      {{ product.selected_or_first_available_variant.price | money }}
+    </div>
+    <a href="{{ product.url }}" class="card__bottom__title">{{ product.title }}</a>
+    <div class="card__bottom__rating">
+      {% render 'icon-stars' %}
+    </div>
+    <!-- Кнопка добавить в корзину -->
+    <button class="product-card__content_add">Add to card</button>
+  </div>
   {% form 'product', product %}
     <input type="number" name="quantity" min="1" value="1" id="product-quantity">
     <select name="id" id="variant-select">

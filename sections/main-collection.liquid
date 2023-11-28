@@ -21,7 +21,7 @@
 
     <div class="main-collection__products">
     {% paginate collection.products by section.settings.count_products %}
-      <div class="row">
+      <div class="main-collection__cards">
         {% for product in collection.products %}
           <div class="main-collection__product">
             {% render 'product-card', product: product %}

@@ -14,10 +14,11 @@
 
   &__products {
     display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
   }
 
   &__product {
-    flex: 1;
     margin-left: 15px;
 
     &:first-child {
