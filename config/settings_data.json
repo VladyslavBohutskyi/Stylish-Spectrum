@@ -5,6 +5,7 @@
     "header_bg_color": "#ffffff",
     "header_logo": "shopify:\/\/shop_images\/stylish_spectrum_logo.png",
     "header_menu": "header",
+    "product_image_height": 320,
     "sections": {
       "header": {
         "type": "header",
@@ -13,6 +14,18 @@
       },
       "footer": {
         "type": "footer",
+        "settings": {
+        }
+      },
+      "popup-search": {
+        "type": "popup-search",
+        "settings": {
+          "bg_color": "#FFFFFF",
+          "container_width": 1300
+        }
+      },
+      "cart-drawer": {
+        "type": "cart-drawer",
         "settings": {
         }
       }

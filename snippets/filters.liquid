@@ -15,6 +15,11 @@
             {{ filter.label }}
             {% render 'icon-angle' %}
           </p>
+          {% if filter.label == 'Size' %}
+            <script>
+              console.log(`{{ filter.label }}`);
+            </script>
+          {% endif %}
           <ul class="main-filters__filters__item__list">
             {% for value in filter.values %}
               <li class="main-filters__filters__item__list__li">
