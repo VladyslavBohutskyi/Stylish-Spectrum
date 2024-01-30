@@ -3,10 +3,18 @@ if (!customElements.get('main-filters')) {
       constructor() {
         super();
       }
-  
+      
       searchParams = new URLSearchParams(window.location.search)
       connectedCallback() {
         this.addListeners()
+        this.addClassToColorFilter()
+      }
+
+      addClassToColorFilter() {
+        const filtersArray = Array.from(this.querySelectorAll('.main-filters__filters__item__list'))
+        filtersArray.forEach((e) => {
+          e.parentElement.outerText == 'Color' ? e.classList.add('main-filters__filters__item__list__color') : false
+        })
       }
   
       addListeners(){
@@ -29,7 +37,6 @@ if (!customElements.get('main-filters')) {
         this.querySelectorAll('.main-filters__filters__item').forEach(el => el.classList.remove('active'))
         el.classList.add('active')
       }
-  
       updatePage(el,e){
         e.preventDefault()
         const filterValue = el.dataset.filterValue

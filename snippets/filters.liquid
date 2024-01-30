@@ -5,7 +5,10 @@
   assign sort_by = results.sort_by | default: results.default_sort_by
   assign results_url = results.url
 -%}
-
+<script>
+  console.log(`{{ results.filters.propety_name |  json_encode }}`);
+  console.log(`{{ filter.v.option.color |  json }}`);
+</script>
 <main-filters class="main-filters">
   <div class="row">
     <div class="main-filters__filters">
@@ -15,29 +18,52 @@
             {{ filter.label }}
             {% render 'icon-angle' %}
           </p>
-          {% if filter.label == 'Size' %}
+          {% comment %} {% if filter.label == 'Color' %}
             <script>
               console.log(`{{ filter.label }}`);
             </script>
-          {% endif %}
+          {% endif %} {% endcomment %}
+
           <ul class="main-filters__filters__item__list">
+          {% if filter.label == 'Color' %}
             {% for value in filter.values %}
               <li class="main-filters__filters__item__list__li">
-                <a
-                  href="https://stylish-spectrum.myshopify.com{% if value.active == true %}{{ value.url_to_remove }}{% else %}{{ value.url_to_add }}{% endif %}"
-                  class="main-filters__filters__item__list__add_filter"
-                  data-filter-value="{% if value.active == true%}{{ value.url_to_remove }}{% else %}{{ value.url_to_add }}{% endif %}"
-                >
-                  {{ value.value }}
-                  {% if value.active %}
-                    {% render 'icon-checked' %}
-                  {% else %}
-                    {% render 'icon-unchecked' %}
-                  {% endif %}
-                </a>
+              <a
+                href="https://stylish-spectrum.myshopify.com{% if value.active == true %}{{ value.url_to_remove }}{% else %}{{ value.url_to_add }}{% endif %}"
+                class="main-filters__filters__item__list__add_filter"
+                data-filter-value="{% if value.active == true%}{{ value.url_to_remove }}{% else %}{{ value.url_to_add }}{% endif %}"
+              >
+                <div class="color_box" style="background-color: {{ value.value }};" ></div>
+                {% if value.active %}
+                  {% render 'icon-checked' %}
+                {% else %}
+                  {% render 'icon-unchecked' %}
+                {% endif %}
+              </a>
               </li>
             {% endfor %}
+          {% else %}
+            {% for value in filter.values %}
+              <li class="main-filters__filters__item__list__li">
+              <a
+                href="https://stylish-spectrum.myshopify.com{% if value.active == true %}{{ value.url_to_remove }}{% else %}{{ value.url_to_add }}{% endif %}"
+                class="main-filters__filters__item__list__add_filter"
+                data-filter-value="{% if value.active == true%}{{ value.url_to_remove }}{% else %}{{ value.url_to_add }}{% endif %}"
+              >
+                {{ value.value }}
+                {% if value.active %}
+                  {% render 'icon-checked' %}
+                {% else %}
+                  {% render 'icon-unchecked' %}
+                {% endif %}
+              </a>
+              </li>
+            {% endfor %}
+
+          {% endif %}
+
           </ul>
+
         </div>
       {% endfor %}
     </div>
