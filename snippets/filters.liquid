@@ -9,6 +9,7 @@
   console.log(`{{ results.filters.propety_name |  json_encode }}`);
   console.log(`{{ filter.v.option.color |  json }}`);
 </script>
+
 <main-filters class="main-filters">
   <div class="row">
     <div class="main-filters__filters">
@@ -18,11 +19,6 @@
             {{ filter.label }}
             {% render 'icon-angle' %}
           </p>
-          {% comment %} {% if filter.label == 'Color' %}
-            <script>
-              console.log(`{{ filter.label }}`);
-            </script>
-          {% endif %} {% endcomment %}
 
           <ul class="main-filters__filters__item__list">
           {% if filter.label == 'Color' %}
