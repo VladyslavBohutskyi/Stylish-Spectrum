@@ -9,17 +9,24 @@
 
   &__wrapper {
     max-width: 60%;
+    @media (max-width: 850px) {
+      max-width: 74%;
+    }
   }
 
   &__title {}
 
-  &__subtitle {}
+  &__subtitle {
+    p{
+      padding-right: 15px;
+    }
+  }
 
   &__products {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    
+    margin-top: 20px;
   }
 
   &__product {
@@ -32,9 +39,21 @@
 
   &__buttons{
     margin-left: auto;
-    margin-top: 35px;
-    cursor: pointer;
+    margin-top: 41px;
+    margin-left: 20px;
+    display: flex;
+    @media (max-width: 850px) {
+      flex-wrap: wrap;
+      justify-content: right;
+    }
     .btn{
+      padding: 0px;
+      width: 180px;
+      height: 40px;
+      margin: 5px 0px 5px 5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       &:disabled{
         color: darkgrey;
         border-color: darkgrey;
@@ -45,5 +64,6 @@
           }
         }
     }
+
   }
 }
