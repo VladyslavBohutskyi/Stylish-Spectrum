@@ -30,7 +30,7 @@
         "step": 10,
         "unit": "px",
         "default": 1300,
-        "info": "Global container width" 
+        "info": "Global container width"
       }
     ]
   },
